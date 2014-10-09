@@ -1,0 +1,58 @@
+```{r opts, echo=FALSE, message=FALSE}
+opts_knit$set(base.dir=outdir, toc='true')
+```
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+```
+
+# Rqc - Quality Control Report
+
+## Average Quality
+This plot describes the average quality pattern by showing on the
+X-axis quality thresholds and on the Y-axis the percentage of reads
+that exceed that quality level.
+```{r average-quality-plot, fig.width=10}
+rqcReadQualityPlot(rqcResultSet)
+```
+
+## Cycle-specific Average Quality
+This describes the average quality scores for each cycle of sequencing.
+```{r cycle-average-quality-plot, fig.width=10}
+rqcCycleAverageQualityPlot(rqcResultSet)
+```
+
+## Read Length Distribution
+Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
+```{r read-width-plot, fig.width=10}
+rqcReadWidthPlot(rqcResultSet)
+```
+
+## Cycle-specific GC Content
+Line plot showing the average GC content for every cycle of sequencing.
+```{r cycle-gc-plot, fig.width=10}
+rqcCycleGCPlot(rqcResultSet)
+```
+
+## Cycle-specific Quality Distribution
+Bar plot showing the proportion of quality calls per cycle. Colors are
+presented in a gradient Red-Blue, where red identifies calls of lower
+quality. This visualization is preferred as it is cleaner than the
+boxplots described below.
+```{r cycle-quality-plots, fig.width=10}
+rqcCycleQualityPlot(rqcResultSet)
+```
+
+## Cycle-specific Quality Distribution - Boxplot
+Boxplots describing empirical patterns of quality distribution on each cycle of sequencing.
+```{r cycle-quality-boxplots, fig.width=10}
+rqcCycleQualityBoxPlot(rqcResultSet)
+```
+
+## Cycle-specific Base Call Proportion
+This bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
+```{r cycle-basecall-plots, fig.width=10}
+rqcCycleBaseCallsPlot(rqcResultSet)
+```
+
+------
+Rqc version `r packageVersion("Rqc")`
