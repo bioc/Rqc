@@ -1,14 +1,17 @@
+---
+title: "Rqc - Quality Control Tool for High-Throughput Sequencing Data"
+date: "October 9, 2014"
+author: Welliton Souza and Benilton Carvalho
+output:
+  BiocStyle::html_document
+---
 <!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Using Rqc}
+%% \VignetteEngine{knitr::rmarkdown}
+%% \VignetteIndexEntry{Using Rqc}
 -->
-<!-- rmarkdown v1 -->
 ```{r style, echo = FALSE, results = 'asis'}
 BiocStyle::markdown()
 ```
-
-# Rqc - Quality Control Tool for High-Throughput Sequencing Data
-
 Rqc is an optimized tool designed for quality control and assessment
 of high-throughput sequencing data. It performs parallel processing of
 entire files and produces a report which contains a set of
