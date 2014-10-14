@@ -1,6 +1,6 @@
 ---
 title: "Rqc - Quality Control Tool for High-Throughput Sequencing Data"
-date: "October 13, 2014"
+date: "October 14, 2014"
 author: Welliton Souza and Benilton Carvalho
 output:
   BiocStyle::html_document
@@ -138,6 +138,11 @@ rqcCycleQualityBoxPlot(rqcResultSet)
 This bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
 ```{r cycle-basecall-plots, fig.width=10}
 rqcCycleBaseCallsPlot(rqcResultSet)
+```
+
+The line plot shows a more detailed view.
+```{r cycle-basecall-lineplots, fig.width=10}
+rqcCycleBaseCallsLinePlot(rqcResultSet)
 ```
 
 ----------

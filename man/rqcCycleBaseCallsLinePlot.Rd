@@ -1,8 +1,8 @@
-\name{rqcCycleBaseCallsPlot}
-\alias{rqcCycleBaseCallsPlot}
-\title{Per cycle base calls plot}
+\name{rqcCycleBaseCallsLinePlot}
+\alias{rqcCycleBaseCallsLinePlot}
+\title{Per cycle base calls line plot}
 \usage{
-rqcCycleBaseCallsPlot(rqcResultSet)
+rqcCycleBaseCallsLinePlot(rqcResultSet)
 }
 \arguments{
   \item{rqcResultSet}{
@@ -11,7 +11,7 @@ rqcCycleBaseCallsPlot(rqcResultSet)
   }
 }
 \description{
-Creates a bar graph of per cycle base calls.
+Creates a line graph of per cycle base calls.
 }
 \value{
 Plot object from \code{\link{ggplot}} function.
@@ -23,7 +23,7 @@ Plot object from \code{\link{ggplot}} function.
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
-rqcCycleBaseCallsPlot(rqcResultSet)
+rqcCycleBaseCallsLinePlot(rqcResultSet)
 }
 \seealso{
 \code{\link{rqcCycleBaseCallsCalc}}

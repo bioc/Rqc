@@ -53,3 +53,8 @@ This bar plot describes the proportion of each nucleotide called for every cycle
 ```{r cycle-basecall-plots, fig.width=10}
 rqcCycleBaseCallsPlot(rqcResultSet)
 ```
+
+The line plot shows a more detailed view.
+```{r cycle-basecall-lineplots, fig.width=10}
+rqcCycleBaseCallsLinePlot(rqcResultSet)
+```
