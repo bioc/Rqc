@@ -5,7 +5,7 @@ opts_knit$set(base.dir=outdir, toc='true')
 BiocStyle::markdown()
 ```
 
-# Rqc - Quality Control Report
+# Rqc `r packageVersion("Rqc")` - Quality Control Report
 
 ## Average Quality
 This plot describes the average quality pattern by showing on the
@@ -53,6 +53,3 @@ This bar plot describes the proportion of each nucleotide called for every cycle
 ```{r cycle-basecall-plots, fig.width=10}
 rqcCycleBaseCallsPlot(rqcResultSet)
 ```
-
-------
-Rqc version `r packageVersion("Rqc")`
