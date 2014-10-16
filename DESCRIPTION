@@ -1,7 +1,7 @@
 Package: Rqc
 Type: Package
 Title: Quality Control Tool for High-Throughput Sequencing Data
-Version: 1.0.2
+Version: 1.0.4
 Author: Welliton Souza, Benilton Carvalho <beniltoncarvalho@gmail.com>
 Maintainer: Welliton Souza <well309@gmail.com>
 Description: Rqc is an optimised tool designed for quality control and 
@@ -10,7 +10,7 @@ Description: Rqc is an optimised tool designed for quality control and
         of high-resolution graphics.
 License: GPL (>= 2)
 Depends: BiocParallel, ShortRead, ggplot2
-Imports: BiocGenerics, Biostrings, IRanges, methods, reshape2, S4Vectors, knitr, BiocStyle
+Imports: BiocGenerics, Biostrings, IRanges, methods, reshape2, S4Vectors, knitr (>= 1.7), BiocStyle
 Suggests: rmarkdown
 VignetteBuilder: knitr
 biocViews: Sequencing, QualityControl
