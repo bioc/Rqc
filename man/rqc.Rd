@@ -1,11 +1,11 @@
 \name{rqc}
 \alias{rqc}
-\title{ Main Rqc function }
+\title{Main Rqc function }
 \description{
-Rqc is an optimized tool designed for quality control and assessment of high-throughput sequencing data. It performs parallel processing of entire files and produces a report which contains a set of high-resolution graphics.
-
-Performs quality control assay on a list of FASTQ files in paralell 
-and creates a HTML report.
+Rqc is an optimized tool designed for quality assessment
+of high-throughput sequencing data. It performs parallel processing of
+entire files and produces an HTML report, which contains a set of
+high-resolution images that can be directly used on publications.
 }
 \usage{
 rqc(path=".", pattern,
@@ -37,9 +37,9 @@ rqc(path=".", pattern,
 \code{\link{rqcQA}}
 }
 \examples{
-options(device.ask.default = FALSE)
-folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
-rqc(folder, ".fastq.gz")
+  options(device.ask.default = FALSE)
+  folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
+  rqc(folder, ".fastq.gz", openBrowser=FALSE)
 }
 \keyword{graphics}
 \keyword{qc}

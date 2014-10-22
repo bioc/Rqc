@@ -25,12 +25,12 @@ rqcReport(rqcResultSet, outdir=tempdir(), file="rqc_report")
   Welliton Souza
 }
 \examples{
-options(device.ask.default = FALSE)
-folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
-files <- list.files(full.names=TRUE, path=folder)
-rqcResultSet <- rqcQA(files)
-reportFile <- rqcReport(rqcResultSet)
-browseURL(reportFile)
+  options(device.ask.default = FALSE)
+  folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
+  files <- list.files(full.names=TRUE, path=folder)
+  rqcResultSet <- rqcQA(files)
+  reportFile <- rqcReport(rqcResultSet)
+  browseURL(reportFile)
 }
 \seealso{
 \code{\link{rqc}}
