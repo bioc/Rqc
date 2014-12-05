@@ -11,7 +11,7 @@ rqcQA <- function(files, sample = TRUE, n = 1e6)
             chunkWidth <- width(chunk)
             enc <- encoding(chunkQuality)
             readAverageQuality <- alphabetScore(chunkQuality) / chunkWidth
-            readWidth <- table(chunkWidth)
+            readWidth <- data.frame(table(chunkWidth))
             cycleQuality <- alphabetByCycle(chunkQuality)
             cycleBaseCall <- alphabetByCycle(chunkBaseCall)
             .RqcResultSet(enc, filename, readAverageQuality, readWidth, 
@@ -27,7 +27,7 @@ rqcQA <- function(files, sample = TRUE, n = 1e6)
             chunkWidth <- width(chunk)
             enc <- encoding(chunkQuality)
             readAverageQuality <- alphabetScore(chunkQuality) / chunkWidth
-            readWidth <- table(chunkWidth)
+            readWidth <- data.frame(table(chunkWidth))
             cycleQuality <- alphabetByCycle(chunkQuality)
             cycleBaseCall <- alphabetByCycle(chunkBaseCall)
             repeat {
@@ -38,7 +38,8 @@ rqcQA <- function(files, sample = TRUE, n = 1e6)
                 chunkWidth <- width(chunk)
                 readAverageQuality <- c(readAverageQuality, 
                                         alphabetScore(chunkQuality) / chunkWidth)
-                readWidth <- readWidth + table(chunkWidth)
+                readWidth <- rbind(readWidth, data.frame(table(chunkWidth)))
+                readWidth <- ddply(readWidth, ~chunkWidth, summarise, Freq = sum(Freq))
                 cycleQuality <- cycleQuality + alphabetByCycle(chunkQuality)
                 cycleBaseCall <- cycleBaseCall + alphabetByCycle(chunkBaseCall)
             }

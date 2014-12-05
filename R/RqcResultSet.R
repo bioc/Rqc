@@ -3,8 +3,8 @@ setClass("RqcResultSet", contains=".QA")
 .RqcResultSet <- function(enc, filename, readAverageQuality, readWidth, 
                           cycleQuality, cycleBaseCall)
 {
-    readWidth <- data.frame(width=as.integer(names(readWidth)),
-                            count=as.integer(readWidth),
+    readWidth <- data.frame(width=as.integer(readWidth$chunkWidth),
+                            count=as.integer(readWidth$Freq),
                             filename=filename)
   
     readAverageQuality <- data.frame(average=readAverageQuality, 
