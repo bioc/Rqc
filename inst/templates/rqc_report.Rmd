@@ -21,7 +21,12 @@ rqcCycleAverageQualityPlot(rqcResultSet)
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
 ```{r read-width-plot, fig.width=10, fig.path=figDir}
-rqcReadWidthPlot(rqcResultSet)
+N <- length(rqcResultSet)
+X <- 1:N
+G <- rep(X, each=2, length.out=N)
+for(i in split(X, G)){
+  print(rqcReadWidthPlot(rqcResultSet[i]))
+}
 ```
 
 ## Cycle-specific GC Content
@@ -36,24 +41,32 @@ presented in a gradient Red-Blue, where red identifies calls of lower
 quality. This visualization is preferred as it is cleaner than the
 boxplots described below.
 ```{r cycle-quality-plots, fig.width=10, fig.path=figDir}
-rqcCycleQualityPlot(rqcResultSet)
+for(i in split(X, G)){
+  print(rqcCycleQualityPlot(rqcResultSet[i]))
+}
 ```
 
 ## Cycle-specific Quality Distribution - Boxplot
 Boxplots describing empirical patterns of quality distribution on each cycle of sequencing.
 ```{r cycle-quality-boxplots, fig.width=10, fig.path=figDir}
-rqcCycleQualityBoxPlot(rqcResultSet)
+for(i in split(X, G)){
+  print(rqcCycleQualityBoxPlot(rqcResultSet[i]))
+}
 ```
 
 ## Cycle-specific Base Call Proportion
 This stacked bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
 ```{r cycle-basecall-plots, fig.width=10, fig.path=figDir}
-rqcCycleBaseCallsPlot(rqcResultSet)
+for(i in split(X, G)){
+  print(rqcCycleBaseCallsPlot(rqcResultSet[i]))
+}
 ```
 
 The line plot shown below contains the same information as the plot
 above. However, some may find this easier to read when comparing the
 calling rates for each of the nucleotides.
 ```{r cycle-basecall-lineplots, fig.width=10, fig.path=figDir}
-rqcCycleBaseCallsLinePlot(rqcResultSet)
+for(i in split(X, G)){
+  print(rqcCycleBaseCallsLinePlot(rqcResultSet[i]))
+}
 ```
