@@ -10,6 +10,6 @@ rqcCycleBaseCallsCalc <- function(rqcResultSet)
         df <- data.frame(t(baseAverage),
                          cycle=factor(baseCall$cycle),
                          filename=baseCall$filename)
-        melt(df, id.vars=c("filename", "cycle"))
+        reshape2::melt(df, id.vars=c("filename", "cycle"))
     })
 }

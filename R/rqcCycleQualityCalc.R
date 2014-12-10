@@ -9,7 +9,7 @@ rqcCycleQualityCalc <- function(rqcResultSet)
             quantile(Rle(score, y), probs)
         })
         iqr <- data.frame(iqr, percentiles=rep(1, length(probs)))
-        iqr <- melt(iqr, id.vars="percentiles", variable.name="cycle")
+        iqr <- reshape2::melt(iqr, id.vars="percentiles", variable.name="cycle")
         iqr$cycle <- as.factor(as.integer(iqr$cycle))
         iqr$filename <- df$filename
         iqr
