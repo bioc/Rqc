@@ -1,9 +1,12 @@
-rqcReport <- function(rqcResultSet, outdir=tempdir(), file="rqc_report")
+rqcReport <- function(rqcResultSet, outdir=tempdir(), file="rqc_report", keepMD=FALSE)
 {
     outdir <- normalizePath(outdir)
-    output <- file.path(outdir, paste0(file, '.html'))
     figDir <- paste0(tempdir(), "/rqc-")
+    mdFile <- file.path(outdir, paste0(file, '.md'))
+    htmlFile <- file.path(outdir, paste0(file, '.html'))
     rmdFile <- system.file("templates", package="Rqc", "rqc_report.Rmd")
-    knit2html(rmdFile, output, quiet = TRUE, options=c("base64_images"))
-    output
+    knit(rmdFile, mdFile, quiet=TRUE)
+    markdownToHTML(mdFile, htmlFile, options="base64_images")
+    if (!keepMD) unlink(mdFile)
+    htmlFile
 }
