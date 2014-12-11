@@ -1,5 +1,12 @@
 rqcQA <- function(files, sample = TRUE, n = 1e6) 
 {
+    if(length(files) == 0) stop("Input files were not provided.")
+    filesNotFound <- files[!file.exists(files)]
+    if (length(filesNotFound) != 0) {
+        for (f in filesNotFound) warning(paste(f, "not found."))
+        stop("One or more input files were not found.")
+    }
+    
     rqcResultSet <- if (sample) {
         bplapply(files, function(file) {
             filename <- basename(file)
