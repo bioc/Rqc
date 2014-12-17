@@ -11,7 +11,8 @@ importMethodsFrom(ShortRead, alphabetByCycle, alphabetScore,
                   FastqStreamer, sread, yield)
 importFrom(ggplot2, aes, aes_string, geom_bar, geom_boxplot, geom_line,
            geom_point, ggplot, labs, scale_fill_gradient, scale_colour_manual,
-           scale_fill_manual, scale_x_discrete, qplot, facet_wrap)
+           scale_fill_manual, scale_x_discrete, qplot, facet_wrap, 
+           scale_y_discrete, geom_tile)
 importFrom(reshape2, melt)
 importFrom(knitr, knit2html, opts_knit)
 importFrom(ShortRead, FastqSampler)
