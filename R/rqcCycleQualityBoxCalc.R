@@ -1,12 +1,12 @@
 rqcCycleQualityBoxCalc <- function(rqcResultSet)
 {
-    probs <- c(.10, .25, .50, .75, .90)
-    bplapply(rqcResultSet, function(x) {
-        df <- x[["perCycle"]][["quality"]]
-        cycleQuality <- df[setdiff(names(df), c("cycle", "filename"))]
-        score <- as.integer(names(cycleQuality))
-        iqr <- apply(cycleQuality, 1, function(y) quantile(Rle(score, y), probs))
-        rownames(iqr) <- c("ymin", "lower", "middle", "upper", "ymax")
-        data.frame(t(iqr), cycle=factor(df$cycle), filename=df$filename)
-    })
+    probs <- c(0.1, 0.25, 0.5, 0.75, 0.9)
+    f <- function(x) {
+        quantile(Rle(x$score, x$count), probs, names = FALSE)
+    }
+
+    df <-perCycleQuality(rqcResultSet)
+    res <- ddply(df, c("filename", "cycle"), f)
+    names(res)[c(-1,-2)] <- c("ymin", "lower", "middle", "upper", "ymax")
+    res
 }

@@ -1,11 +1,10 @@
 rqcCycleAverageQualityCalc <- function(rqcResultSet)
 {
-    dfList <- bplapply(rqcResultSet, function(x) {
-        df <- x[["perCycle"]][["quality"]]
-        cycleQuality <- df[setdiff(names(df), c("cycle", "filename"))]
-        score <- as.integer(names(cycleQuality))
-        quality <- apply(cycleQuality, 1, function(y) mean(Rle(score, y)))
-        data.frame(quality, cycle=df$cycle, filename=df$filename)
-    })
-    do.call(rbind, dfList)
+    f <- function(x) {
+        quality <- mean(Rle(x$score, x$count))
+        data.frame(quality)
+    }
+    
+    df <- perCycleQuality(rqcResultSet)
+    ddply(df, c("filename", "cycle"), f)
 }

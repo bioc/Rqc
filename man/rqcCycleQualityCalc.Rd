@@ -24,8 +24,7 @@ rqcCycleQualityCalc(rqcResultSet)
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
-dfList <- rqcCycleQualityCalc(rqcResultSet)
-df <- do.call(rbind, dfList)
+df <- rqcCycleQualityCalc(rqcResultSet)
 qplot(x=cycle, y=percentiles, fill=value, data=df, geom="bar", 
       stat="identity", facets=~filename)
 }

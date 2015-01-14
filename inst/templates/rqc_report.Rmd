@@ -9,6 +9,12 @@ pngnox11 = function(filename, width, height){
 
 # Rqc `r packageVersion("Rqc")` - Quality Control Report
 
+## Average Quality by Tile and Lanes
+This plot describes the average quality by each tile and lanes.
+```{r tile-average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
+rqcTileQualityPlot(rqcResultSet)
+```
+
 ## Average Quality
 This plot describes the average quality pattern by showing on the
 X-axis quality thresholds and on the Y-axis the percentage of reads

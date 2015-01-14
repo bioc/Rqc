@@ -1,14 +1,10 @@
 rqcCycleGCCalc <- function(rqcResultSet)
 {
     f <- function(x) {
-        sum(x[c("C", "G")]) / sum(x) * 100
+        gc <- sum(x$count[c(2,3)]) / sum(x$count) * 100
+        data.frame(gc)
     }
     
-    gcList <- lapply(rqcResultSet, function(x) {
-        baseCall <- x[["perCycle"]][["baseCall"]]
-        gc <- apply(baseCall[, c("A","C","G","T","N")], 1, f)
-        data.frame(gc=gc, cycle=baseCall$cycle, 
-                   filename=baseCall$filename)
-    })
-    do.call(rbind, gcList)
+    df <- perCycleBasecall(rqcResultSet)
+    ddply(df, c("filename", "cycle"), f)
 }

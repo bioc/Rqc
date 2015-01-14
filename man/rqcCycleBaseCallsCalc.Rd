@@ -18,8 +18,7 @@ Calculates average base call per cycle.
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
-dfList <- rqcCycleBaseCallsCalc(rqcResultSet)
-df <- do.call(rbind, dfList)
+df <- rqcCycleBaseCallsCalc(rqcResultSet)
 qplot(x=cycle, y=value, colour=variable, group=variable, data=df, 
       geom="line", facets=~filename)
 }

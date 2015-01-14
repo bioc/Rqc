@@ -1,4 +1,4 @@
-exportPattern("^rqc[[:alpha:]]*")
+exportPattern("^[[:alpha:]]*")
 import(methods)
 importClassesFrom(ShortRead, .QA)
 importMethodsFrom(BiocGenerics, do.call, lapply, ncol, nrow, paste,
@@ -6,17 +6,18 @@ importMethodsFrom(BiocGenerics, do.call, lapply, ncol, nrow, paste,
 importMethodsFrom(BiocParallel, bplapply)
 importMethodsFrom(Biostrings, encoding, quality)
 importMethodsFrom(IRanges, mean, quantile, sub)
-importMethodsFrom(S4Vectors, as.factor, Rle, t)
+importMethodsFrom(S4Vectors, Rle)
 importMethodsFrom(ShortRead, alphabetByCycle, alphabetScore,
                   FastqStreamer, sread, yield)
 importFrom(ggplot2, aes, aes_string, geom_bar, geom_boxplot, geom_line,
            geom_point, ggplot, labs, scale_fill_gradient, scale_colour_manual,
-           scale_fill_manual, scale_x_discrete, qplot, facet_wrap, 
-           scale_y_discrete, geom_tile)
+           scale_fill_manual, scale_x_discrete, qplot, facet_wrap,
+           scale_y_discrete, geom_tile, geom_histogram)
 importFrom(reshape2, melt)
 importFrom(knitr, knit2html, opts_knit)
 importFrom(ShortRead, FastqSampler)
 importFrom(BiocStyle, markdown)
-importFrom(plyr, ddply, summarise)
+importFrom(plyr, ddply, summarize, .)
 importFrom(knitr, knit)
 importFrom(markdown, markdownToHTML)
+importFrom(BiocParallel, bpparam)

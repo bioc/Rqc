@@ -26,8 +26,7 @@ rqcCycleQualityBoxCalc(rqcResultSet)
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
-dfList <- rqcCycleQualityBoxCalc(rqcResultSet)
-df <- do.call(rbind, dfList)
+df <- rqcCycleQualityBoxCalc(rqcResultSet)
 qplot(x=cycle, ymin=ymin, lower=lower, middle=middle, upper=upper, ymax=ymax, 
       data=df, geom="boxplot", stat="identity", facets=~filename)
 }

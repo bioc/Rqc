@@ -11,7 +11,8 @@ high-resolution images that can be directly used on publications.
 rqc(path=".", pattern,
     sample=TRUE, n=1e6,
     outdir=tempdir(), file="rqc_report",
-    openBrowser=TRUE)
+    openBrowser=TRUE,
+    BPPARAM=bpparam())
 }
 \arguments{
   \item{path}{directory path that contains input files.}
@@ -25,6 +26,7 @@ rqc(path=".", pattern,
   Is created a temporary directory by default.}
   \item{file}{output file name.}
   \item{openBrowser}{if TRUE opens report file on default Internet Browser.}
+  \item{BPPARAM}{An instance of a \code{BiocParallelParam}. See \code{\link{bpparam}}.}
 }
 \value{
   A invisible named list of \code{RqcResultSet} objects, 

@@ -1,17 +1,11 @@
 rqcCycleQualityCalc <- function(rqcResultSet)
 {
-    probs <- seq(from=.01, to=.9, by=.01)
-    bplapply(rqcResultSet, function(x) {
-        df <- x[["perCycle"]][["quality"]]
-        cycleQuality <- df[setdiff(names(df), c("cycle", "filename"))]
-        score <- as.integer(names(cycleQuality))
-        iqr <- apply(cycleQuality, 1, function(y) {
-            quantile(Rle(score, y), probs)
-        })
-        iqr <- data.frame(iqr, percentiles=as.factor(probs * 100))
-        iqr <- reshape2::melt(iqr, id.vars="percentiles", variable.name="cycle")
-        iqr$cycle <- as.factor(as.integer(iqr$cycle))
-        iqr$filename <- df$filename
-        iqr
-    })
+    f <- function(x) {
+        percentiles <- 1:100
+        value <- quantile(Rle(x$score, x$count), seq(0.01, 1, 0.01), names=FALSE)
+        data.frame(percentiles, value)
+    }
+
+    df <- perCycleQuality(rqcResultSet)
+    ddply(df, c("filename", "cycle"), f)
 }

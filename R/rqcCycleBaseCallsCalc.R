@@ -1,15 +1,11 @@
 rqcCycleBaseCallsCalc <- function(rqcResultSet)
 {
     f <- function(x) {
-        x / sum(x) * 100
+        variable <- x$base
+        value <- x$count / sum(x$count) * 100
+        data.frame(variable, value)
     }
-    
-    lapply(rqcResultSet, function(x) {
-        baseCall <- x[["perCycle"]][["baseCall"]]
-        baseAverage <- apply(baseCall[, c("A","C","G","T","N")], 1, f)
-        df <- data.frame(t(baseAverage),
-                         cycle=factor(baseCall$cycle),
-                         filename=baseCall$filename)
-        reshape2::melt(df, id.vars=c("filename", "cycle"))
-    })
+
+    df <- perCycleBasecall(rqcResultSet)
+    ddply(df, c("filename", "cycle"), f)
 }
