@@ -79,14 +79,13 @@
 .tileQuality <- function(chunk)
 {
     ids <- as.character(ShortRead::id(chunk))
-    m <- regexec(":(\\d+):(\\d+):(\\d+):(\\d+)", ids)
-    mat <- do.call(rbind, lapply(regmatches(ids, m), `[`, 2:5))
+    split <- strsplit(ids, ":")
+    mat <- do.call(rbind, split)[, c(2, 3)]
     class(mat) <- "integer"
-    df <- data.frame(mat[, c(1,2)])
-    df$lane <- df[[1]]
-    df$tile <- df[[2]]
+    df <- data.frame(mat)
+    names(df) <- c("lane", "tile")
     df$average <- alphabetScore(quality(chunk)) / width(chunk)
-    aggregate(average ~ lane + tile, df, mean)
+    ddply(df, c("lane", "tile"), summarize, average = mean(average))
 }
 
 .readWidth <- function(chunk)
