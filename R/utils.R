@@ -85,7 +85,7 @@
     df <- data.frame(mat)
     names(df) <- c("lane", "tile")
     df$average <- alphabetScore(quality(chunk)) / width(chunk)
-    ddply(df, c("lane", "tile"), summarize, average = mean(average))
+    ddply(df, c("lane", "tile"), summarize, average = mean(get("average")))
 }
 
 .readWidth <- function(chunk)
