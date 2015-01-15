@@ -13,7 +13,6 @@ rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
 
     readQuality <- .readQuality(chunk)
     readWidth <- .readWidth(chunk)
-    tileQuality <- .tileQuality(chunk)
     cycleQuality <- .cycleQuality(chunk)
     cycleBasecall <- .cycleBasecall(chunk)
 
@@ -21,7 +20,6 @@ rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
     while (!sample & length(chunk) != 0) {
       readQuality <- .mergeReadQuality(readQuality, .readQuality(chunk))
       readWidth <- .mergeReadWidth(readWidth, .readWidth(chunk))
-      tileQuality <- .mergeTileQuality(tileQuality, .tileQuality(chunk))
       cycleQuality <- .mergeCycleQuality(cycleQuality, .cycleQuality(chunk))
       cycleBasecall <- .mergeCycleBasecall(cycleBasecall, .cycleBasecall(chunk))
 
@@ -33,8 +31,7 @@ rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
 
     lst = list(perFile=list(information=fileInfo),
                perCycle=list(quality=cycleQuality, baseCall=cycleBasecall),
-               perRead=list(width=readWidth, averageQuality=readQuality),
-               perTile=list(meanQuality=tileQuality))
+               perRead=list(width=readWidth, averageQuality=readQuality))
     new("RqcResultSet", .srlist=lst)
   }, BPPARAM=BPPARAM)
   names(rqcResultSet) <- basename(files)

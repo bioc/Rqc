@@ -34,15 +34,6 @@
     xy
 }
 
-.mergeTileQuality <- function(x, y)
-{
-    xy <- merge(x, y, c("lane", "tile"), all=TRUE, sort=FALSE)
-    average <- rowMeans(xy[, -(1:2)], na.rm=TRUE)
-    xy$average.x <- xy$average.y <- NULL
-    xy$average <- average
-    xy
-}
-
 .cycleBasecall <- function(chunk)
 {
     bases <- c("A", "C", "G", "T", "N")
@@ -74,18 +65,6 @@
     count <- as.integer(tbl)
     average <- as.numeric(names(tbl))
     data.frame(average, count)
-}
-
-.tileQuality <- function(chunk)
-{
-    ids <- as.character(ShortRead::id(chunk))
-    split <- strsplit(ids, ":")
-    mat <- do.call(rbind, split)[, c(2, 3)]
-    class(mat) <- "integer"
-    df <- data.frame(mat)
-    names(df) <- c("lane", "tile")
-    df$average <- alphabetScore(quality(chunk)) / width(chunk)
-    ddply(df, c("lane", "tile"), summarize, average = mean(get("average")))
 }
 
 .readWidth <- function(chunk)

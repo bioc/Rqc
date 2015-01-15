@@ -19,7 +19,5 @@
 
 \code{\link{perCycleBasecall}} returns cycle-specific base call frequency table.
 
-\code{\link{perTileQuality}} returns mean quality by tile and lanes.
-
 \code{\link{perFileInformation}} returns informations of the files.
 }
