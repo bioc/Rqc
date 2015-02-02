@@ -58,9 +58,14 @@
     data.frame(cycle, quality, score, count)
 }
 
+.readMeanQuality <- function(chunk)
+{
+    alphabetScore(quality(chunk)) / width(chunk)
+}
+
 .readQuality <- function(chunk)
 {
-    average <- alphabetScore(quality(chunk)) / width(chunk)
+    average <- .readMeanQuality(chunk)
     tbl  <- table(average)
     count <- as.integer(tbl)
     average <- as.numeric(names(tbl))

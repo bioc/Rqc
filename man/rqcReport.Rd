@@ -2,7 +2,7 @@
 \alias{rqcReport}
 \title{Quality Control HTML Report}
 \usage{
-rqcReport(rqcResultSet, outdir=tempdir(), file="rqc_report", keepMD=FALSE)
+    rqcReport(rqcResultSet, outdir=tempdir(), file="rqc_report", keepMD=FALSE)
 }
 \arguments{
   \item{rqcResultSet}{

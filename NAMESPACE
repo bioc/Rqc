@@ -12,7 +12,7 @@ importMethodsFrom(ShortRead, alphabetByCycle, alphabetScore,
 importFrom(ggplot2, aes, aes_string, geom_bar, geom_boxplot, geom_line,
            geom_point, ggplot, labs, scale_fill_gradient, scale_colour_manual,
            scale_fill_manual, scale_x_discrete, qplot, facet_wrap,
-           scale_y_discrete, geom_tile, geom_histogram)
+           scale_y_discrete, geom_tile, geom_histogram, coord_flip)
 importFrom(knitr, knit2html, opts_knit)
 importFrom(ShortRead, FastqSampler)
 importFrom(BiocStyle, markdown)

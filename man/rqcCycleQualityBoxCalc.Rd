@@ -2,7 +2,7 @@
 \alias{rqcCycleQualityBoxCalc}
 \title{Per cycle quality percentiles calculation for boxplot}
 \description{
-  Calculates per cycle quality percentiles to create boxplot.
+    Calculates per cycle quality percentiles to create boxplot.
 }
 \usage{
 rqcCycleQualityBoxCalc(rqcResultSet)
@@ -14,10 +14,10 @@ rqcCycleQualityBoxCalc(rqcResultSet)
   }
 }
 \value{
-  List of data frames ready for plot.
+    Data frame ready to plot.
 }
 \author{
-  Welliton Souza
+    Welliton Souza
 }
 \seealso{
 \code{\link{rqcCycleQualityBoxPlot}}

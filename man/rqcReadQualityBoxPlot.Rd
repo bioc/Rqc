@@ -1,13 +1,14 @@
-\name{rqcCycleQualityBoxPlot}
-\alias{rqcCycleQualityBoxPlot}
+\name{rqcReadQualityBoxPlot}
+\alias{rqcReadQualityBoxPlot}
 \title{
-  Per cycle quality box plot
+    Per read mean quality box plot
 }
 \description{
-  Plots per cycle quality box plot.
+    This function creates crate a graphic charts with box plots describing per 
+    read mean quality distribution for each input file 
 }
 \usage{
-rqcCycleQualityBoxPlot(rqcResultSet)
+rqcReadQualityBoxPlot(rqcResultSet)
 }
 \arguments{
   \item{rqcResultSet}{
@@ -16,19 +17,19 @@ rqcCycleQualityBoxPlot(rqcResultSet)
   }
 }
 \value{
-  Plot object from \code{\link{ggplot}} function.
+    Plot object from \code{\link{ggplot}} function.
 }
 \author{
-  Welliton Souza
+    Welliton Souza
 }
 \seealso{
-\code{\link{rqcCycleQualityBoxCalc}}
+\code{\link{rqcReadQualityBoxCalc}}
 }
 \examples{
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
-rqcCycleQualityBoxPlot(rqcResultSet)
+rqcReadQualityBoxPlot(rqcResultSet)
 }
 \keyword{ graphics }
 \keyword{ qc }

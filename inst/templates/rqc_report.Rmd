@@ -9,6 +9,13 @@ pngnox11 = function(filename, width, height){
 
 # Rqc `r packageVersion("Rqc")` - Quality Control Report
 
+## Per Read Mean Quality Distribution of Files
+This plot describe an overview of per read mean quality distribution of all files
+```{r read-mean-dist, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
+rqcReadQualityBoxPlot(rqcResultSet)
+```
+
+
 ## Average Quality
 This plot describes the average quality pattern by showing on the
 X-axis quality thresholds and on the Y-axis the percentage of reads
