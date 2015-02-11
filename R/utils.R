@@ -80,9 +80,11 @@
     data.frame(width, count)
 }
 
-.fileInfo <- function(file)
+.fileInfo <- function(input)
 {
+    file <- input$file
     path <- dirname(file)
     filename <- factor(basename(file))
-    data.frame(filename, path, stringsAsFactors=FALSE)
+    group <- input$groupFactor
+    data.frame(filename, path, group, stringsAsFactors=FALSE)
 }

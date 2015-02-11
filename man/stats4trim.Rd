@@ -9,18 +9,17 @@
 \usage{
     stats4trim(rqcResultSet, qmin, pmax)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{rqcResultSet}{
-    list of \code{RqcResultSet} objects created by \code{\link{rqc}} 
-    and \code{\link{rqcQA}} functions.
-}
-  \item{qmin}{
-    Minimum read mean quality value (bewteen 0 and 41).
-}
-  \item{pmax}{
-    Maximum percentage of reads permitted been lost during trimming step.
-}
+    \item{rqcResultSet}{
+        list of \code{RqcResultSet} objects created by \code{\link{rqc}} 
+        and \code{\link{rqcQA}} functions.
+    }
+    \item{qmin}{
+        Minimum read mean quality value (bewteen 0 and 41).
+    }
+    \item{pmax}{
+        Maximum percentage of reads permitted been lost during trimming step.
+    }
 }
 \value{
     A data frame containg estimated minimum quality and maximum percentage for each input file.

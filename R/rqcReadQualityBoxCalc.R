@@ -6,7 +6,7 @@ rqcReadQualityBoxCalc <- function(rqcResultSet)
     }
     
     df <- perReadQuality(rqcResultSet)
-    res <- ddply(df, "filename", f)
-    names(res)[-1] <- c("min", "ymin", "lower", "middle", "upper", "ymax", "max")
+    res <- ddply(df, c("filename", "group"), f)
+    names(res)[c(-1,-2)] <- c("min", "ymin", "lower", "middle", "upper", "ymax", "max")
     res
 }

@@ -10,6 +10,7 @@ high-resolution images that can be directly used on publications.
 \usage{
 rqc(path=".", pattern,
     sample=TRUE, n=1e6,
+    groupFactor = rep("None", length(files)),
     outdir=tempdir(), file="rqc_report",
     openBrowser=TRUE,
     BPPARAM=bpparam())
@@ -22,6 +23,7 @@ rqc(path=".", pattern,
   This represents sample size if 'sample' parameter is TRUE,
   if not represents the chunk size to read on each iteration.
   By default, it reads a sample of one million sequences from each input file.}
+  \item{groupFactor}{group name for each input file.}
   \item{outdir}{output directory path. 
   Is created a temporary directory by default.}
   \item{file}{output file name.}

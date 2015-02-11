@@ -2,7 +2,8 @@ perReadQuality <- function(rqcResultSet)
 {
     f <- function(x) {
         filename <- x[["perFile"]][["information"]]$filename
-        cbind(x[["perRead"]][["averageQuality"]], filename)
+        group <- x[["perFile"]][["information"]]$group
+        cbind(x[["perRead"]][["averageQuality"]], filename, group)
     }
 
     if (is(rqcResultSet, "RqcResultSet")) return(f(rqcResultSet))

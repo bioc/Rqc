@@ -1,4 +1,5 @@
-rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
+rqcQA <- function(files, sample = TRUE, n = 1e6, 
+                  groupFactor = rep("None", length(files)), BPPARAM=bpparam())
 {
   if(length(files) == 0) stop("Input files were not provided.")
   filesNotFound <- files[!file.exists(files)]
@@ -6,8 +7,15 @@ rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
     for (f in filesNotFound) warning(paste(f, "not found."))
     stop("One or more input files were not found.")
   }
+  if(length(groupFactor) != length(files)) 
+      stop("groupFactor argument must have the same length of files argument.")
+  
+  inputs <- lapply(seq_along(files), function(i) {
+      list(file=files[i], groupFactor=groupFactor[i])
+  })
 
-  rqcResultSet <- bplapply(files, function(file) {
+  rqcResultSet <- bplapply(inputs, function(input) {
+    file <- input$file
     con <- if (sample) FastqSampler(file, n) else FastqStreamer(file, n)
     chunk <- yield(con)
 
@@ -27,7 +35,7 @@ rqcQA <- function(files, sample = TRUE, n = 1e6, BPPARAM=bpparam())
     }
     close(con)
 
-    fileInfo <- .fileInfo(file)
+    fileInfo <- .fileInfo(input)
 
     lst = list(perFile=list(information=fileInfo),
                perCycle=list(quality=cycleQuality, baseCall=cycleBasecall),
