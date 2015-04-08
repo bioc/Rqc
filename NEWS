@@ -1,1 +1,24 @@
-First release of Rqc.
+Changes in version 1.2:
+
+NEW FEATURES
+
+    o   Study design metadata system (group ID, strand, etc) added
+    o   Statistics for trimming step added
+    o   Per sample mean quality box plot added
+    o   Per cycle mean quality Principal Component Analysis (PCA) plot added
+    o   Overrepresented sequencing reads plot added
+    o   Custom report support system added
+
+USER VISIBLE CHANGES
+
+    o   RqcResultSet class stores data as frequency tables
+    o   BPPARAM argument added to rqc and rqcQA functions
+
+BUG FIXES
+
+    o   Memory usage improved
+    o   Input file validation system
+    o   Rqc does not depend on X11 to generate plots
+    o   Rqc's reporter can generate plots for more than 10 files
+    o   Fixed bug related with reshape2 dependency
+    o   Fixed bug related with table function
