@@ -7,7 +7,6 @@ NEW FEATURES
     o   Per sample mean quality box plot added
     o   Per cycle mean quality Principal Component Analysis (PCA) plot added
     o   Overrepresented sequencing reads plot added
-    o   Custom report support system added
 
 USER VISIBLE CHANGES
 

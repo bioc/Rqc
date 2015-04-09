@@ -25,10 +25,17 @@ rqcReadQualityPlot(rqcResultSet)
 ```
 
 ## Cycle-specific Average Quality
-This describes the average quality scores for each cycle of sequencing.
+This plot describes the average quality scores for each cycle of sequencing.
 ```{r cycle-average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 rqcCycleAverageQualityPlot(rqcResultSet)
 ```
+
+## PCA Biplot (cycle-specific read average quality)
+Biplot from Principal Component Analysis (PCA) of cycle-specific read average quality.
+```{r biplot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
+rqcCycleAverageQualityPcaPlot(rqcResultSet)
+```
+
 
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
