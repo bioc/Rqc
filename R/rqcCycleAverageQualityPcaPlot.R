@@ -16,6 +16,6 @@ rqcCycleAverageQualityPcaPlot <- function(rqcResultSet)
         geom_hline(aes(0), size=.2) + geom_vline(aes(0), size=.2) + 
         geom_text(aes_string(x="v1", y="v2", label="filename"), vjust=1, color="red", pc) +
         geom_segment(aes_string(x=0, y=0, xend="v1", yend="v2"), 
-            arrow=arrow(length=unit(0.2,"cm")), alpha=0.75, color="red", pc) +
+            arrow=arrow(length=unit(0.2,"cm")), color="red", pc) +
         theme_bw()
 }
