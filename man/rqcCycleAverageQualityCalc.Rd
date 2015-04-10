@@ -24,6 +24,7 @@ folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(folder, "fastq.gz", full.names=TRUE)
 rqcResultSet <- rqcQA(files)
 df <- rqcCycleAverageQualityCalc(rqcResultSet)
+df$cycle <- as.numeric(levels(df$cycle))[df$cycle]
 qplot(x=cycle, y=quality, colour=filename, data=df, geom="line")
 }
 \seealso{

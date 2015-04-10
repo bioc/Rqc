@@ -228,7 +228,8 @@ to generate plots using other tools.
 
 ```{r calc}
 df <- rqcCycleAverageQualityCalc(rqcResultSet)
-plot(df$cycle, df$quality, col = df$filename, xlab='Cycle', ylab='Quality Score')
+cycle <- as.numeric(levels(df$cycle))[df$cycle]
+plot(cycle, df$quality, col = df$filename, xlab='Cycle', ylab='Quality Score')
 ```
 
 One can also process a subset of result data using subsets of a list.
