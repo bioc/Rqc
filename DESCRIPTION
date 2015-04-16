@@ -1,7 +1,7 @@
 Package: Rqc
 Type: Package
 Title: Quality Control Tool for High-Throughput Sequencing Data
-Version: 1.2.0
+Version: 1.3.0
 Author: Welliton Souza, Benilton Carvalho <beniltoncarvalho@gmail.com>
 Maintainer: Welliton Souza <well309@gmail.com>
 Description: Rqc is an optimised tool designed for quality control and
