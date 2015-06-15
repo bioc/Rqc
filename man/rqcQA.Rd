@@ -3,7 +3,8 @@
 \title{Quality Assessment Rqc function}
 \usage{
   rqcQA(files, sample = TRUE, n = 1e6, 
-        groupFactor = rep("None", length(files)), BPPARAM = bpparam())
+        groupFactor = rep("None", length(files)),
+        workers = multicoreWorkers())
 }
 \arguments{
   \item{files}{A vector of file paths.}
@@ -13,7 +14,7 @@
   if not represents the chunk size to read on each iteration.
   Default is read a sample of one million sequences from each input file.}
   \item{groupFactor}{group name for each input file.}
-  \item{BPPARAM}{An instance of a \code{BiocParallelParam}. See \code{\link{bpparam}}.}
+  \item{workers}{Number of parallel workers. Set 1 to serial. Default value from \code{\link{multicoreWorkers}}.}
 }
 \value{
   A named list of \code{RqcResultSet} objects, each one represents a file.

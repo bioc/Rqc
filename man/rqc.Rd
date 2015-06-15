@@ -13,7 +13,7 @@ rqc(path=".", pattern,
     groupFactor = rep("None", length(files)),
     outdir=tempdir(), file="rqc_report",
     openBrowser=TRUE,
-    BPPARAM=bpparam())
+    workers=multicoreWorkers())
 }
 \arguments{
   \item{path}{directory path that contains input files.}
@@ -28,7 +28,7 @@ rqc(path=".", pattern,
   Is created a temporary directory by default.}
   \item{file}{output file name.}
   \item{openBrowser}{if TRUE opens report file on default Internet Browser.}
-  \item{BPPARAM}{An instance of a \code{BiocParallelParam}. See \code{\link{bpparam}}.}
+  \item{workers}{Number of parallel workers. Set 1 to serial. Default value from \code{\link{multicoreWorkers}}.}
 }
 \value{
   A invisible named list of \code{RqcResultSet} objects, 

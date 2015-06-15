@@ -1,5 +1,6 @@
 rqcQA <- function(files, sample = TRUE, n = 1e6, 
-                  groupFactor = rep("None", length(files)), BPPARAM=bpparam())
+                  groupFactor = rep("None", length(files)),
+                  workers = multicoreWorkers())
 {
   if(length(files) == 0) stop("Input files were not provided.")
   filesNotFound <- files[!file.exists(files)]
@@ -14,6 +15,12 @@ rqcQA <- function(files, sample = TRUE, n = 1e6,
       list(file=files[i], groupFactor=groupFactor[i])
   })
 
+  if (workers > 1) {
+      param <- MulticoreParam(workers, tasks=length(files), stop.on.error=TRUE)
+  } else {
+      param <- SerialParam()
+  }
+ 
   rqcResultSet <- bplapply(inputs, function(input) {
     file <- input$file
     con <- if (sample) FastqSampler(file, n) else FastqStreamer(file, n)
@@ -41,7 +48,7 @@ rqcQA <- function(files, sample = TRUE, n = 1e6,
                perCycle=list(quality=cycleQuality, baseCall=cycleBasecall),
                perRead=list(width=readWidth, averageQuality=readQuality))
     new("RqcResultSet", .srlist=lst)
-  }, BPPARAM=BPPARAM)
+  }, BPPARAM=param)
   names(rqcResultSet) <- basename(files)
   return(rqcResultSet)
 }

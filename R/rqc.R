@@ -3,10 +3,10 @@ rqc <- function(path=".", pattern,
                 groupFactor = rep("None", length(files)),
                 outdir=tempdir(), file="rqc_report",
                 openBrowser=TRUE,
-                BPPARAM=bpparam())
+                workers=multicoreWorkers())
 {
     files <- list.files(path, pattern, full.names=TRUE)
-    rqcResultSet <- rqcQA(files, sample, n, groupFactor, BPPARAM=BPPARAM)
+    rqcResultSet <- rqcQA(files, sample, n, groupFactor, workers)
     reportFile <- rqcReport(rqcResultSet, outdir, file)
     message(sprintf("'%s' has been created.", reportFile))
     if (openBrowser) {
