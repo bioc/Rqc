@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleAverageQualityPcaPlot calculates necessary statistics
+#' @export
 rqcCycleAverageQualityPcaCalc <- function(rqcResultSet)
 {
   df <- rqcCycleAverageQualityCalc(rqcResultSet)

@@ -1,3 +1,22 @@
+#' Per cycle base calls plot
+#' 
+#' Creates a bar graph of per cycle base calls.
+#' 
+#' @param rqcResultSet list of \code{RqcResultSet} objects created by
+#' \code{\link{rqc}} and \code{\link{rqcQA}} functions.
+#' @return Plot object from \code{\link{ggplot}} function.
+#' @author Welliton Souza
+#' @keywords graphics qc
+#' @examples
+#' 
+#' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
+#'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
+#'   files <- list.files(full.names=TRUE, path=folder)
+#'   rqcResultSet <- rqcQA(files, workers=1)
+#' }, keep="rqcResultSet")
+#' rqcCycleBaseCallsPlot(rqcResultSet)
+#' 
+#' @export
 rqcCycleBaseCallsPlot <- function(rqcResultSet)
 {
     df <- rqcCycleBaseCallsCalc(rqcResultSet)
@@ -7,5 +26,5 @@ rqcCycleBaseCallsPlot <- function(rqcResultSet)
         scale_x_discrete(breaks=seq(from=1, to=len, by=len %/% 10)) + 
         labs(x="Cycle", y="%", fill="Base Call") +
         facet_wrap(facets=~filename, ncol=2) +
-        scale_fill_manual(values=c("#009E73", "#0072B2", "#000000", "#D55E00", "#999999"))
+        scale_fill_manual(values=getBioColor("DNA_BASES_N"))
 }

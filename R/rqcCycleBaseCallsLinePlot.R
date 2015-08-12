@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleBaseCallsPlot creates a line graph
+#' @export
 rqcCycleBaseCallsLinePlot <- function(rqcResultSet)
 {
     df <- rqcCycleBaseCallsCalc(rqcResultSet)
@@ -7,6 +9,5 @@ rqcCycleBaseCallsLinePlot <- function(rqcResultSet)
         scale_x_discrete(breaks=seq(from=1, to=len, by=len %/% 10)) + 
         labs(x="Cycle", y="%", colour="Base Call") +
         facet_wrap(facets=~filename, ncol=2) +
-        scale_colour_manual(values=c("#009E73", "#0072B2", "#000000", 
-                                     "#D55E00", "#999999"))
+        scale_colour_manual(values=getBioColor("DNA_BASES_N"))
 }

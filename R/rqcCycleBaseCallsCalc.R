@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleBaseCallsPlot calculates necessary statistics
+#' @export
 rqcCycleBaseCallsCalc <- function(rqcResultSet)
 {
     f <- function(x) {

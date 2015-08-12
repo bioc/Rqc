@@ -9,6 +9,13 @@ pngnox11 = function(filename, width, height){
 
 # Rqc `r packageVersion("Rqc")` - Quality Control Report
 
+## File Information
+This table describes input files. `reads` column can be total number of reads (`sample=FALSE`) or sample size.
+```{r}
+kable(perFileInformation(rqcResultSet))
+```
+
+
 ## Per Read Mean Quality Distribution of Files
 This plot describe an overview of per read mean quality distribution of all files
 ```{r read-mean-dist, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
@@ -21,21 +28,43 @@ This plot describes the average quality pattern by showing on the
 X-axis quality thresholds and on the Y-axis the percentage of reads
 that exceed that quality level.
 ```{r average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-rqcReadQualityPlot(rqcResultSet)
+groups <- unique(perFileInformation(rqcResultSet)$group)
+for (group in groups) {
+  rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
+  print(rqcReadQualityPlot(rqcResultSet.sub) +
+          ggtitle(paste("Group", group)))
+}
 ```
 
 ## Cycle-specific Average Quality
 This plot describes the average quality scores for each cycle of sequencing.
 ```{r cycle-average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-rqcCycleAverageQualityPlot(rqcResultSet)
+for (group in groups) {
+  rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
+  print(rqcCycleAverageQualityPlot(rqcResultSet.sub) +
+          ggtitle(paste("Group", group)))
+}
 ```
 
 ## PCA Biplot (cycle-specific read average quality)
 Biplot from Principal Component Analysis (PCA) of cycle-specific read average quality.
 ```{r biplot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-rqcCycleAverageQualityPcaPlot(rqcResultSet)
+for (group in groups) {
+  rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
+  print(rqcCycleAverageQualityPcaPlot(rqcResultSet.sub) +
+          ggtitle(paste("Group", group)))
+}
 ```
 
+## Read Frequency
+This plot shows the proportion of reads that appeared many times.
+```{r readfrequency, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
+for (group in groups) {
+  rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
+  print(rqcReadFrequencyPlot(rqcResultSet.sub) +
+          ggtitle(paste("Group", group)))
+}
+```
 
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
@@ -51,7 +80,11 @@ for(i in split(X, G)){
 ## Cycle-specific GC Content
 Line plot showing the average GC content for every cycle of sequencing.
 ```{r cycle-gc-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-rqcCycleGCPlot(rqcResultSet)
+for (group in groups) {
+  rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
+  print(rqcCycleGCPlot(rqcResultSet.sub) +
+          ggtitle(paste("Group", group)))
+}
 ```
 
 ## Cycle-specific Quality Distribution

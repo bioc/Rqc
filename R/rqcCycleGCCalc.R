@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleGCPlot calculates necessary statistics
+#' @export
 rqcCycleGCCalc <- function(rqcResultSet)
 {
     f <- function(x) {

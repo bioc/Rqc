@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleAverageQualityPlot calculates necessary statistics
+#' @export
 rqcCycleAverageQualityCalc <- function(rqcResultSet)
 {
     f <- function(x) {
@@ -6,5 +8,5 @@ rqcCycleAverageQualityCalc <- function(rqcResultSet)
     }
     
     df <- perCycleQuality(rqcResultSet)
-    ddply(df, c("filename", "cycle"), f)
+    ddply(df, c("group", "filename", "cycle"), f)
 }

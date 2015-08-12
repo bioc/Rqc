@@ -34,6 +34,15 @@
     xy
 }
 
+.mergeReadFrequency <- function(x, y)
+{
+    xy <- merge(x, y, "hash", all=TRUE, sort=TRUE)
+    count <- rowSums(xy[, -1], na.rm=TRUE)
+    xy$count.x <- xy$count.y <- NULL
+    xy$count <- count
+    xy
+}
+
 .cycleBasecall <- function(chunk)
 {
     bases <- c("A", "C", "G", "T", "N")
@@ -80,11 +89,18 @@
     data.frame(width, count)
 }
 
-.fileInfo <- function(input)
+.fileInfo <- function(file, group, format, readWidth)
 {
-    file <- input$file
     path <- dirname(file)
     filename <- factor(basename(file))
-    group <- input$groupFactor
-    data.frame(filename, path, group, stringsAsFactors=FALSE)
+    reads <- sum(readWidth$count)
+    data.frame(filename, format, group, reads, path, stringsAsFactors=FALSE)
+}
+
+.readFrequency <- function(chunk)
+{
+    tbl <- table(toRRDNA(as.character(sread(chunk))))
+    count <- as.integer(tbl)
+    hash <- names(tbl)
+    data.frame(hash, count, stringsAsFactors = FALSE)
 }

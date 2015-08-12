@@ -1,3 +1,5 @@
+#' @describeIn rqcReadQualityPlot calculates necessary statistics
+#' @export
 rqcReadQualityCalc <- function(rqcResultSet)
 {
     f <- function(x) {

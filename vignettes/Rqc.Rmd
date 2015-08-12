@@ -7,7 +7,7 @@ BiocStyle::markdown()
 ```
 # Rqc - Quality Control Tool for High-Throughput Sequencing Data
 
-*April 9, 2014*
+*August 6, 2015*
 
 *Welliton Souza and Benilton Carvalho*
 
@@ -86,36 +86,61 @@ stored in a temporary directory. A sample report is shown below:
 
 ----------
 ```{r example, echo=FALSE, message=FALSE}
+library(knitr)
 fastqDir <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(fastqDir, "fastq.gz", full.names=TRUE)
-rqcResultSet <- rqcQA(files = files)
+qa <- rqcQA(files, workers=1)
 ```
 # Rqc `r packageVersion("Rqc")` - Quality Control Report
+
+## File Information
+This table describes input files. `reads` column can be total number of reads (`sample=FALSE`) or sample size.
+```{r}
+kable(perFileInformation(qa))
+```
+
+## Per Read Mean Quality Distribution of Files
+This plot describe an overview of per read mean quality distribution of all files
+```{r read-mean-dist, fig.width=10}
+rqcReadQualityBoxPlot(qa)
+```
 
 ## Average Quality
 This plot describes the average quality pattern by showing on the
 X-axis quality thresholds and on the Y-axis the percentage of reads
 that exceed that quality level.
 ```{r average-quality-plot, fig.width=10}
-rqcReadQualityPlot(rqcResultSet)
+rqcReadQualityPlot(qa)
 ```
 
 ## Cycle-specific Average Quality
 This describes the average quality scores for each cycle of sequencing.
 ```{r cycle-average-quality-plot, fig.width=10}
-rqcCycleAverageQualityPlot(rqcResultSet)
+rqcCycleAverageQualityPlot(qa)
+```
+
+## Read Frequency
+This plot shows the proportion of reads that appeared many times.
+```{r readfrequency, fig.width=10}
+rqcReadFrequencyPlot(qa)
+```
+
+## Heatmap of top represented reads
+This heatmap plot shows dstance matrix between top represented reads. This functon only works with one result file (and not a list).
+```{r heatmap-reads, fig.width=10}
+rqcFileHeatmap(qa[[1]])
 ```
 
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
 ```{r read-width-plot, fig.width=10}
-rqcReadWidthPlot(rqcResultSet)
+rqcReadWidthPlot(qa)
 ```
 
 ## Cycle-specific GC Content
 Line plot showing the average GC content for every cycle of sequencing.
 ```{r cycle-gc-plot, fig.width=10}
-rqcCycleGCPlot(rqcResultSet)
+rqcCycleGCPlot(qa)
 ```
 
 ## Cycle-specific Quality Distribution
@@ -124,24 +149,30 @@ presented in a gradient Red-Blue, where red identifies calls of lower
 quality. This visualization is preferred as it is cleaner than the
 boxplots described below.
 ```{r cycle-quality-plots, fig.width=10}
-rqcCycleQualityPlot(rqcResultSet)
+rqcCycleQualityPlot(qa)
+```
+
+## PCA Biplot (cycle-specific read average quality)
+Biplot from Principal Component Analysis (PCA) of cycle-specific read average quality.
+```{r biplot, fig.width=10}
+rqcCycleAverageQualityPcaPlot(qa)
 ```
 
 ## Cycle-specific Quality Distribution - Boxplot
 Boxplots describing empirical patterns of quality distribution on each cycle of sequencing.
 ```{r cycle-quality-boxplots, fig.width=10}
-rqcCycleQualityBoxPlot(rqcResultSet)
+rqcCycleQualityBoxPlot(qa)
 ```
 
 ## Cycle-specific Base Call Proportion
 This bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
 ```{r cycle-basecall-plots, fig.width=10}
-rqcCycleBaseCallsPlot(rqcResultSet)
+rqcCycleBaseCallsPlot(qa)
 ```
 
 The line plot shows a more detailed view.
 ```{r cycle-basecall-lineplots, fig.width=10}
-rqcCycleBaseCallsLinePlot(rqcResultSet)
+rqcCycleBaseCallsLinePlot(qa)
 ```
 
 ----------
@@ -181,7 +212,7 @@ should use `rqcQA` function instead `rqc`. This function receives a
 vector containing the paths of the input files.
 
 ```{r rqcQA}
-rqcResultSet <- rqcQA(files = files)
+qa <- rqcQA(files, workers=1)
 ```
 
 The `rqcQA` function returns a list that contains the required
@@ -198,10 +229,10 @@ brackets.
 ### 3. Generating report
 
 To create a final HTML report, the user can apply the `rqcReport`
-function to the `rqcResultSet` object.
+function to the `qa` object.
 
 ```{r report, eval=FALSE}
-reportFile <- rqcReport(rqcResultSet)
+reportFile <- rqcReport(qa)
 browseURL(reportFile)
 ```
 
@@ -214,10 +245,10 @@ temporary directory. This behavior can by modified by setting the
 
 The Rqc package performs parallel processing of the samples by
 interfacing with the `r Biocpkg('BiocParallel')` package. By default,
-BiocParallel loads `MulticoreParam` with the maximum number of workers
-available. At this point, Rqc supports only `MulticoreParam` for
-parallel processing. It is possible to process the input files
-serially throught the use of the `SerialParam` function.
+Rqc calls `multicoreWorkers` function that returns the maximum number 
+of workers available. You can change the number of cores setting `workers`
+parameter on `rqc` and `rqcQA` functions. It is possible to process the 
+input files serially by setting `workers=1`.
 
 ## Graphics
 
@@ -227,7 +258,7 @@ final plot. The example below shows how the user can access these data
 to generate plots using other tools.
 
 ```{r calc}
-df <- rqcCycleAverageQualityCalc(rqcResultSet)
+df <- rqcCycleAverageQualityCalc(qa)
 cycle <- as.numeric(levels(df$cycle))[df$cycle]
 plot(cycle, df$quality, col = df$filename, xlab='Cycle', ylab='Quality Score')
 ```
@@ -235,8 +266,35 @@ plot(cycle, df$quality, col = df$filename, xlab='Cycle', ylab='Quality Score')
 One can also process a subset of result data using subsets of a list.
 
 ```{r subset, fig.width=10}
-sublist <- rqcResultSet[1]
+sublist <- qa[1]
 rqcCycleQualityPlot(sublist)
+```
+
+## Writing personalized quality control reports 
+
+Rqc package accepts R Markdown file format as template file for generating custom reports. 
+Markdown is a markup language for web development. 
+R Markdown files are regular Markdown files with R codes. 
+Every chunk of code is executed during compilation done by knitr  package. 
+Knitr takes R Markdown file and generates Markdown file merged with R codes and their outputs such as text, tables and figures. 
+Result Markdown file is used by Rqc for generating final report in HTML or PDF formats. 
+The source file of Rqc's default report is a good reference for writing new template reports. 
+Run code below returns the system file path to this source file. 
+
+```{r default-report-path, eval=FALSE}
+system.file(package = "Rqc", "templates", "rqc_report.Rmd") 
+```
+
+Basic concepts for writing Markdown documents with R code are available at http://rmarkdown.rstudio.com/. 
+Advanced concepts about the compilation process of R Markdown files are available at http://yihui.name/knitr/. 
+The Bioconductor project provides style guidelines for HTML documents at http://www.bioconductor.org/packages/release/bioc/vignettes/BiocStyle/inst/doc/HtmlStyle.html. 
+
+Rqc result data is available inside template files through `rqcResultSet` object. 
+This object is a list of summarized statistics about input files and it is used by all accessor functions and plots provided by Rqc package. 
+The `rqcReport` function takes template file path as argument and generates personalized reports. 
+
+```{r rqc-report-custom-template, eval=FALSE}
+rqcReport(qa, templateFile = "custom_report.Rmd") 
 ```
 
 ## Final Considerations

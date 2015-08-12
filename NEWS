@@ -1,8 +1,20 @@
 Changes in version 1.4:
 
+NEW FEATURES
+
+    o   Custom template support added
+    o   Read frequency result and plot (rqcReadFrequencyPlot) added
+    o   Per file top represented reads added
+    o   Top representated reads added
+    o   Per file heatmap plot (rqcFileHeatmap) added
+    o   checkpoint function added (experimental)
+
 USER VISIBLE CHANGES
 
     o   BPPARAM argument replaced by workers argument
+    o   File information table added to default report template
+    o   Function rqcReadWidthPlot, y-axis changed to proportion (%)
+    o   Almost all plots use colorblid scheme
 
 Changes in version 1.2:
 

@@ -1,3 +1,5 @@
+#' @describeIn rqcCycleQualityPlot calculates necessary statistics
+#' @export
 rqcCycleQualityCalc <- function(rqcResultSet)
 {
     f <- function(x) {
