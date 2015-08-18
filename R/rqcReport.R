@@ -29,7 +29,7 @@
 #'   rqcResultSet <- rqcQA(files, workers=1)
 #' }, keep="rqcResultSet")
 #' reportFile <- rqcReport(rqcResultSet)
-#' browseURL(reportFile)
+#' if (interactive()) browseURL(reportFile)
 #' 
 #' @export
 rqcReport <- function(rqcResultSet, outdir=tempdir(), file="rqc_report", keepMD=FALSE,
