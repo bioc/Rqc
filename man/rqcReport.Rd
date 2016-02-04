@@ -41,7 +41,7 @@ checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
   rqcResultSet <- rqcQA(files, workers=1)
 }, keep="rqcResultSet")
 reportFile <- rqcReport(rqcResultSet)
-if (interactive()) browseURL(reportFile)
+browseURL(reportFile)
 }
 \author{
 Welliton Souza
