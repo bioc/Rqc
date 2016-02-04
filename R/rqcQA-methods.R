@@ -57,7 +57,7 @@ function(x, sample, n, group, top, workers = multicoreWorkers())
         stop("'group' argument must have the same length of files argument.")
   
     param <- if (workers > 1) {
-        MulticoreParam(workers,tasks=length(x),stop.on.error=TRUE,oufile='')
+        MulticoreParam(workers,tasks=length(x),stop.on.error=TRUE)
     } else {
         SerialParam()
     }

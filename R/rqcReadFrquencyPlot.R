@@ -33,7 +33,7 @@ rqcReadFrequencyPlot <- function(rqcResultSet)
         scale_fill_manual(values=colorBlindSafePal("RdYlBu")(size, TRUE))
     } else {
       p + geom_line(aes_string(colour="filename")) + scale_x_log10() +
-        labs(x="log10(Number of occurences)", y="Proportion of reads (%)", colour="Filename") +
+        labs(x="Number of occurences", y="Proportion of reads (%)", colour="Filename") +
         scale_colour_manual(values=colorBlindSafePal("RdYlBu")(size, TRUE))
     }
 }

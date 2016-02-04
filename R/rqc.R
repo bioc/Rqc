@@ -44,7 +44,7 @@ rqc <- function(path=".", pattern,
     reportFile <- rqcReport(rqcResultSet, outdir, file)
     message(sprintf("'%s' has been created.", reportFile))
     if (openBrowser) {
-        if (interactive()) browseURL(reportFile)
+        browseURL(reportFile)
     }
     invisible(rqcResultSet)
 }
