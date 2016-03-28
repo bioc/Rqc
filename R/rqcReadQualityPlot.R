@@ -12,27 +12,16 @@
 #' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 #'   files <- list.files(full.names=TRUE, path=folder)
-<<<<<<< HEAD
-#'   rqcResultSet <- rqcQA(files, workers=1)
-=======
 #'   rqcResultSet <- rqcQA(files, pair=c(1,1), workers=1)
->>>>>>> master
 #' }, keep="rqcResultSet")
 #' rqcReadQualityPlot(rqcResultSet)
 #' 
 #' @export
 rqcReadQualityPlot <- function(rqcResultSet)
 {
-    size <- length(rqcResultSet)
-    if (size > 11) 
-        warning("Number of samples is greater than 11, the color of the lines will be repeated.")
-    if (size < 3)
-        size <- 3
-    
     df <- rqcReadQualityCalc(rqcResultSet)
     ggplot(df, aes_string(y="quantile", x="value", colour="filename")) + 
         geom_line() + 
         labs(y="% of Reads Exceeding Quality (q)", x="Quality (q)", 
-             colour="Filename") +
-        scale_colour_manual(values=colorBlindSafePal("RdYlBu")(size, TRUE))
+             colour="Filename")
 }

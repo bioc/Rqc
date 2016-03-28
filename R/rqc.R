@@ -13,16 +13,12 @@
 #' sample size if 'sample' parameter is TRUE, if not represents the chunk size
 #' to read on each iteration.  By default, it reads a sample of one million
 #' sequences from each input file.
-<<<<<<< HEAD
-#' @param groupFactor group name for each input file.
-=======
 #' @param group group name for each input file.
 #' @param top number of top over-represented reads. Default is 10 reads.
 #' @param pair combination of files for paired-end reads. By default, all input 
 #' files are treated as single-end. For paired-end, please define a vector of
 #' numbers where two index with the same value represent a pair. Examples, 
 #' single-end \code{c(1,2,3,4)} and paired-end \code{c(1,1,2,2)}.
->>>>>>> master
 #' @param outdir output directory path.  Is created a temporary directory by
 #' default.
 #' @param file output file name.
@@ -38,11 +34,7 @@
 #' 
 #'   options(device.ask.default = FALSE)
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
-<<<<<<< HEAD
-#'   rqc(folder, ".fastq.gz", workers=1, openBrowser=FALSE)
-=======
 #'   rqc(folder, ".fastq.gz", pair=c(1,1), workers=1, openBrowser=FALSE)
->>>>>>> master
 #' 
 #' @export
 rqc <- function(path=".", pattern,

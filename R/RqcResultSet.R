@@ -6,11 +6,7 @@
 #' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 #'   files <- list.files(full.names=TRUE, path=folder)
-<<<<<<< HEAD
-#'   rqcResultSet <- rqcQA(files, workers=1)
-=======
 #'   rqcResultSet <- rqcQA(files, pair=c(1,1), workers=1)
->>>>>>> master
 #' }, keep="rqcResultSet")
 #' head(perCycleBasecall(rqcResultSet))
 #' head(perCycleQuality(rqcResultSet))

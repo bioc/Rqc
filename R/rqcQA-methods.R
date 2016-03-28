@@ -16,13 +16,10 @@
 #' sequences from each input file.
 #' @param group group name for each input file.
 #' @param top number of top over-represented reads. Default is 10 reads.
-<<<<<<< HEAD
-=======
 #' @param pair combination of files for paired-end reads. By default, all input 
 #' files are treated as single-end. For paired-end, please define a vector of
 #' numbers where two index with the same value represent a pair. Examples, 
 #' single-end \code{c(1,2,3,4)} and paired-end \code{c(1,1,2,2)}.
->>>>>>> master
 #' @param ... other parameters
 #' @return A named list of \code{RqcResultSet} objects, each one represents a
 #' file.
@@ -33,22 +30,14 @@
 #' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 #'   files <- list.files(full.names=TRUE, path=folder)
-<<<<<<< HEAD
-#'   rqcResultSet <- rqcQA(files, workers=1)
-=======
 #'   rqcResultSet <- rqcQA(files, pair=c(1,1), workers=1)
->>>>>>> master
 #' }, keep="rqcResultSet")
 #' rqcReadQualityPlot(rqcResultSet)
 #' 
 #' @aliases rqcQA
 #' @exportMethod rqcQA
 setGeneric("rqcQA", 
-<<<<<<< HEAD
-    function(x, sample=TRUE, n=1e6, group=rep("None", length(x)), top=10, ...) 
-=======
     function(x, sample=TRUE, n=1e6, group=rep("None", length(x)), top=10, pair=seq_along(x), ...) 
->>>>>>> master
         standardGeneric("rqcQA"),
     signature="x")
 
@@ -58,11 +47,7 @@ setGeneric("rqcQA",
 #' @param workers number of parallel workers
 #' @exportMethod rqcQA
 setMethod("rqcQA", signature(x="list"),
-<<<<<<< HEAD
-function(x, sample, n, group, top, workers = multicoreWorkers())
-=======
 function(x, sample, n, group, top, pair, workers = multicoreWorkers())
->>>>>>> master
 {
     if (length(x) == 0)
         stop("Input files were not provided.")
@@ -81,13 +66,8 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
         SerialParam()
     }
  
-<<<<<<< HEAD
-    rqcResultSet <- bpmapply(rqcQA, x, sample, n, group, top, BPPARAM=param, 
-        SIMPLIFY=FALSE, USE.NAMES=FALSE)
-=======
     rqcResultSet <- bpmapply(rqcQA, x, sample, n, group, top, pair, 
         BPPARAM=param, SIMPLIFY=FALSE, USE.NAMES=FALSE)
->>>>>>> master
   
   names(rqcResultSet) <- basename(sapply(x, path))
   return(rqcResultSet)
@@ -99,25 +79,15 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
 #' @exportMethod rqcQA
 setMethod("rqcQA", signature(x="character"),
 function(x, sample = TRUE, n = 1e6, group = rep("None", length(x)),
-<<<<<<< HEAD
-         top=10, workers = multicoreWorkers())
-{
-    rqcQA(detectFileFormat(x), sample, n, group, top, workers)
-=======
          top=10, pair=seq_along(x), workers = multicoreWorkers())
 {
     rqcQA(detectFileFormat(x), sample, n, group, top, pair, workers)
->>>>>>> master
 })
 
 #' @describeIn rqcQA process only one BAM file.
 #' @inheritParams rqcQA
 #' @exportMethod rqcQA
-<<<<<<< HEAD
-setMethod("rqcQA", signature(x="BamFile"), function(x, sample, n, group, top) {
-=======
 setMethod("rqcQA", signature(x="BamFile"), function(x, sample, n, group, top, pair) {
->>>>>>> master
     param <- ScanBamParam(what = c("seq", "qual"))
     yieldSize(x) <- n
     con <- open(x)
@@ -152,11 +122,7 @@ setMethod("rqcQA", signature(x="BamFile"), function(x, sample, n, group, top, pa
     }
     close(con)
     
-<<<<<<< HEAD
-    fileInfo <- .fileInfo(x$path, group, "BAM", readWidth)
-=======
     fileInfo <- .fileInfo(x$path, group, "BAM", readWidth, pair)
->>>>>>> master
     
     top <- readFrequency[order(readFrequency$count, decreasing = TRUE)[1:top], ]
     top$hash <- as.character(top$hash)
@@ -177,11 +143,7 @@ setMethod("rqcQA", signature(x="BamFile"), function(x, sample, n, group, top, pa
 #' @describeIn rqcQA process only one FASTQ file.
 #' @inheritParams rqcQA
 #' @exportMethod rqcQA
-<<<<<<< HEAD
-setMethod("rqcQA", signature(x="FastqFile"), function(x, sample, n, group, top) {
-=======
 setMethod("rqcQA", signature(x="FastqFile"), function(x, sample, n, group, top, pair) {
->>>>>>> master
     con <- if (sample) FastqSampler(x, n) else FastqStreamer(x$path, n)
     chunk <- yield(con)
     
@@ -205,11 +167,7 @@ setMethod("rqcQA", signature(x="FastqFile"), function(x, sample, n, group, top, 
     }
     close(con)
     
-<<<<<<< HEAD
-    fileInfo <- .fileInfo(x$path, group, "FASTQ", readWidth)
-=======
     fileInfo <- .fileInfo(x$path, group, "FASTQ", readWidth, pair)
->>>>>>> master
     
     top <- readFrequency[order(readFrequency$count, decreasing = TRUE)[1:top], ]
     top$hash <- as.character(top$hash)
