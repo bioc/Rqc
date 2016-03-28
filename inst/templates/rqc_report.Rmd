@@ -69,11 +69,10 @@ for (group in groups) {
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
 ```{r read-width-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-N <- length(rqcResultSet)
-X <- 1:N
-G <- rep(X, each=2, length.out=N)
-for(i in split(X, G)){
-  print(rqcReadWidthPlot(rqcResultSet[i]))
+pairs <- unique(perFileInformation(rqcResultSet)$pair)
+for(pair in pairs) {
+  rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
+  print(rqcReadWidthPlot(rqcResultSet.sub))
 }
 ```
 
@@ -93,24 +92,27 @@ presented in a gradient Red-Blue, where red identifies calls of lower
 quality. This visualization is preferred as it is cleaner than the
 boxplots described below.
 ```{r cycle-quality-plots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-for(i in split(X, G)){
-  print(rqcCycleQualityPlot(rqcResultSet[i]))
+for(pair in pairs) {
+  rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
+  print(rqcCycleQualityPlot(rqcResultSet.sub))
 }
 ```
 
 ## Cycle-specific Quality Distribution - Boxplot
 Boxplots describing empirical patterns of quality distribution on each cycle of sequencing.
 ```{r cycle-quality-boxplots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-for(i in split(X, G)){
-  print(rqcCycleQualityBoxPlot(rqcResultSet[i]))
+for(pair in pairs) {
+  rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
+  print(rqcCycleQualityBoxPlot(rqcResultSet.sub))
 }
 ```
 
 ## Cycle-specific Base Call Proportion
 This stacked bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
 ```{r cycle-basecall-plots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-for(i in split(X, G)){
-  print(rqcCycleBaseCallsPlot(rqcResultSet[i]))
+for(pair in pairs) {
+  rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
+  print(rqcCycleBaseCallsPlot(rqcResultSet.sub))
 }
 ```
 
@@ -118,7 +120,8 @@ The line plot shown below contains the same information as the plot
 above. However, some may find this easier to read when comparing the
 calling rates for each of the nucleotides.
 ```{r cycle-basecall-lineplots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
-for(i in split(X, G)){
-  print(rqcCycleBaseCallsLinePlot(rqcResultSet[i]))
+for(pair in pairs) {
+  rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
+  print(rqcCycleBaseCallsLinePlot(rqcResultSet.sub))
 }
 ```

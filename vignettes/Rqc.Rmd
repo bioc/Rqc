@@ -7,7 +7,11 @@ BiocStyle::markdown()
 ```
 # Rqc - Quality Control Tool for High-Throughput Sequencing Data
 
+<<<<<<< HEAD
 *August 6, 2015*
+=======
+*March 23, 2016*
+>>>>>>> master
 
 *Welliton Souza and Benilton Carvalho*
 

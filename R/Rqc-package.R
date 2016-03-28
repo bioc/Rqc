@@ -17,7 +17,11 @@
 #' 
 #'   options(device.ask.default = FALSE)
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
+<<<<<<< HEAD
 #'   rqc(folder, ".fastq.gz", workers=1)
+=======
+#'   rqc(folder, ".fastq.gz", pair=c(1,1), workers=1)
+>>>>>>> master
 #'   
 #' @useDynLib Rqc 
 #' @import methods
@@ -30,7 +34,11 @@
 #' @importMethodsFrom ShortRead alphabetByCycle alphabetScore FastqStreamer sread yield ShortReadQ
 #' @importMethodsFrom Rsamtools path
 #' @importMethodsFrom GenomicAlignments readGAlignments
+<<<<<<< HEAD
 #' @importFrom ggplot2 aes aes_string geom_bar geom_boxplot geom_line geom_point ggplot labs scale_fill_gradient scale_colour_manual scale_fill_manual scale_x_discrete qplot facet_wrap scale_y_discrete geom_tile geom_histogram coord_flip theme_bw geom_hline geom_vline geom_text geom_segment scale_x_log10
+=======
+#' @importFrom ggplot2 aes aes_string geom_bar geom_boxplot geom_line geom_point ggplot labs scale_fill_gradient scale_colour_manual scale_fill_manual scale_x_discrete qplot facet_wrap scale_y_discrete geom_tile geom_histogram coord_flip theme_bw geom_hline geom_vline geom_text geom_segment scale_x_log10 scale_fill_continuous
+>>>>>>> master
 #' @importFrom knitr knit2html opts_knit kable
 #' @importFrom ShortRead FastqSampler FastqFile 
 #' @importFrom BiocStyle markdown 
@@ -39,7 +47,11 @@
 #' @importFrom markdown markdownToHTML 
 #' @importFrom BiocParallel bpparam MulticoreParam SerialParam multicoreWorkers 
 #' @importFrom grid arrow unit 
+<<<<<<< HEAD
 #' @importFrom reshape2 dcast 
+=======
+#' @importFrom reshape2 dcast melt
+>>>>>>> master
 #' @importFrom digest digest 
 #' @importFrom Rcpp evalCpp sourceCpp
 #' @importFrom biovizBase colorBlindSafePal  getBioColor

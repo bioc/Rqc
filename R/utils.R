@@ -89,12 +89,21 @@
     data.frame(width, count)
 }
 
+<<<<<<< HEAD
 .fileInfo <- function(file, group, format, readWidth)
+=======
+.fileInfo <- function(file, group, format, readWidth, pair)
+>>>>>>> master
 {
     path <- dirname(file)
     filename <- factor(basename(file))
     reads <- sum(readWidth$count)
+<<<<<<< HEAD
     data.frame(filename, format, group, reads, path, stringsAsFactors=FALSE)
+=======
+    data.frame(filename, pair=factor(pair), format, group, reads, path, 
+        stringsAsFactors=FALSE)
+>>>>>>> master
 }
 
 .readFrequency <- function(chunk)

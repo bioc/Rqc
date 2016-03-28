@@ -1,8 +1,13 @@
 Package: Rqc
 Type: Package
 Title: Quality Control Tool for High-Throughput Sequencing Data
+<<<<<<< HEAD
 Version: 1.5.2
 Author: Welliton Souza, Benilton Carvalho <benilton@unicamp.br>
+=======
+Version: 1.5.3
+Author: Welliton Souza, Benilton Carvalho <beniltoncarvalho@gmail.com>
+>>>>>>> master
 Maintainer: Welliton Souza <well309@gmail.com>
 Description: Rqc is an optimised tool designed for quality control and
     assessment of high-throughput sequencing data. It performs parallel
@@ -10,14 +15,40 @@ Description: Rqc is an optimised tool designed for quality control and
     of high-resolution graphics.
 License: GPL (>= 2)
 Depends:
+<<<<<<< HEAD
     BiocParallel, ShortRead, ggplot2
 Imports:
     BiocGenerics, Biostrings, IRanges, methods, S4Vectors, knitr (>= 1.7),
     BiocStyle, plyr, markdown, grid, reshape2, digest, Rcpp (>= 0.11.6),
     biovizBase, shiny, Rsamtools, GenomicAlignments, GenomicFiles
+=======
+    BiocParallel,
+    ShortRead,
+    ggplot2
+Imports:
+    BiocGenerics,
+    Biostrings,
+    IRanges,
+    methods,
+    S4Vectors,
+    knitr (>= 1.7),
+    BiocStyle,
+    plyr,
+    markdown,
+    grid,
+    reshape2,
+    digest,
+    Rcpp (>= 0.11.6),
+    biovizBase,
+    shiny,
+    Rsamtools,
+    GenomicAlignments,
+    GenomicFiles
+>>>>>>> master
 LinkingTo: Rcpp
 Suggests:
     testthat
 VignetteBuilder: knitr
 biocViews: Sequencing, QualityControl, DataImport
 URL: https://github.com/labbcb/Rqc
+RoxygenNote: 5.0.1

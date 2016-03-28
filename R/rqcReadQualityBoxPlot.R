@@ -13,7 +13,11 @@
 #' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 #'   files <- list.files(full.names=TRUE, path=folder)
+<<<<<<< HEAD
 #'   rqcResultSet <- rqcQA(files, workers=1)
+=======
+#'   rqcResultSet <- rqcQA(files, pair=c(1,1), workers=1)
+>>>>>>> master
 #' }, keep="rqcResultSet")
 #' rqcReadQualityBoxPlot(rqcResultSet)
 #' 
@@ -32,6 +36,10 @@ rqcReadQualityBoxPlot <- function(rqcResultSet)
         geom_boxplot(stat = "identity", aes_string(fill="group")) + 
         geom_point(aes(y=min)) + geom_point(aes(y=max)) +
         labs(x="Filename", y="Mean Quality", fill="Group") +
+<<<<<<< HEAD
         coord_flip() + scale_x_discrete(limits=rev(levels(df$filename))) +
         scale_fill_manual(values=colorBlindSafePal("RdYlBu")(size, TRUE))
+=======
+        coord_flip() + scale_x_discrete(limits=rev(levels(df$filename)))
+>>>>>>> master
 }

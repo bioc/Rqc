@@ -1,3 +1,13 @@
+Changes in version 1.6:
+
+NEW FEATURES
+
+    o   Support to paired-end reads added
+    
+USER VISIBLE CHANGES
+
+    o   Per file heatmap plot improved
+
 Changes in version 1.4:
 
 NEW FEATURES

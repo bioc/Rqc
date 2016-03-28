@@ -12,7 +12,11 @@
 #' checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 #'   folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 #'   files <- list.files(full.names=TRUE, path=folder)
+<<<<<<< HEAD
 #'   rqcResultSet <- rqcQA(files, workers=1)
+=======
+#'   rqcResultSet <- rqcQA(files, pair=c(1,1), workers=1)
+>>>>>>> master
 #' }, keep="rqcResultSet")
 #' rqcCycleAverageQualityPcaPlot(rqcResultSet)
 #' 
@@ -36,6 +40,5 @@ rqcCycleAverageQualityPcaPlot <- function(rqcResultSet)
         geom_vline(aes(0), size=.2, xintercept=0) +
         geom_text(aes_string(x="v1", y="v2", label="filename"), vjust=1, color="red", pc) +
         geom_segment(aes_string(x=0, y=0, xend="v1", yend="v2"), 
-            arrow=arrow(length=unit(0.2,"cm")), color="red", pc) +
-        theme_bw()
+            arrow=arrow(length=unit(0.2,"cm")), color="red", pc)
 }
