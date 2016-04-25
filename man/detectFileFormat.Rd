@@ -4,13 +4,13 @@
 \alias{detectFileFormat}
 \title{Detect file format}
 \usage{
-detectFileFormat(files)
+detectFileFormat(file)
 }
 \arguments{
-\item{files}{charactor vector of file names}
+\item{file}{file name}
 }
 \value{
-list of FastqFile and BamFiles objects
+FastqFile or BamFiles objects
 }
 \description{
 Detect file format
@@ -18,7 +18,7 @@ Detect file format
 \examples{
 folder <- system.file(package="ShortRead", "extdata/E-MTAB-1147")
 files <- list.files(full.names=TRUE, path=folder)
-input <- detectFileFormat(files)
+input <- lapply(files, detectFileFormat)
 sapply(input, class)
 }
 

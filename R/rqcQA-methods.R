@@ -52,7 +52,7 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
     if (length(x) == 0)
         stop("Input files were not provided.")
     
-    filesNotFound <- x[!file.exists(sapply(x, path))]
+    filesNotFound <- x[!sapply(x, file.exists)]
     if (length(filesNotFound) != 0) {
         for (f in filesNotFound) warning(paste(f, "not found."))
         stop("One or more input files were not found.")
@@ -82,7 +82,11 @@ setMethod("rqcQA", signature(x="character"),
 function(x, sample = TRUE, n = 1e6, group = rep("None", length(x)),
          top=10, pair=seq_along(x), workers = multicoreWorkers())
 {
-    rqcQA(detectFileFormat(x), sample, n, group, top, pair, workers)
+    if (length(x) == 1) {
+        rqcQA(detectFileFormat(x), sample, n, group, top, pair)
+    } else {
+        rqcQA(as.list(x), sample, n, group, top, pair, workers)
+    }
 })
 
 #' @describeIn rqcQA process only one BAM file.
