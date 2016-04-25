@@ -23,7 +23,7 @@
 #' @import methods
 #' @importClassesFrom ShortRead .QA
 #' @importMethodsFrom BiocGenerics do.call lapply ncol nrow paste rbind setdiff table unique width
-#' @importMethodsFrom BiocParallel bplapply bpmapply
+#' @importMethodsFrom BiocParallel bplapply bpmapply bpstop
 #' @importMethodsFrom Biostrings encoding quality
 #' @importMethodsFrom IRanges mean quantile sub
 #' @importMethodsFrom S4Vectors Rle mcols
