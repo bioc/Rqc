@@ -61,16 +61,17 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
         stop("'group' argument must have the same length of files argument.")
   
     param <- if (workers > 1) {
-        MulticoreParam(workers,tasks=length(x),stop.on.error=TRUE)
+        MulticoreParam(workers, tasks=workers, stop.on.error=TRUE)
     } else {
         SerialParam()
     }
  
     rqcResultSet <- bpmapply(rqcQA, x, sample, n, group, top, pair, 
         BPPARAM=param, SIMPLIFY=FALSE, USE.NAMES=FALSE)
-  
-  names(rqcResultSet) <- basename(sapply(x, path))
-  return(rqcResultSet)
+    bpstop(param)
+    
+    names(rqcResultSet) <- sapply(x, basename)
+    return(rqcResultSet)
 })
 
 #' @describeIn rqcQA automatically detects file format 
@@ -144,6 +145,8 @@ setMethod("rqcQA", signature(x="BamFile"), function(x, sample, n, group, top, pa
 #' @inheritParams rqcQA
 #' @exportMethod rqcQA
 setMethod("rqcQA", signature(x="FastqFile"), function(x, sample, n, group, top, pair) {
+    nthreads <- .Call(ShortRead:::.set_omp_threads, 1L)
+    on.exit(.Call(ShortRead:::.set_omp_threads, nthreads))
     con <- if (sample) FastqSampler(x, n) else FastqStreamer(x$path, n)
     chunk <- yield(con)
     
