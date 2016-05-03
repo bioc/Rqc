@@ -174,7 +174,8 @@ setMethod("rqcQA", signature(x="FastqFile"), function(x, sample, n, group, top, 
     }
     close(con)
     
-    fileInfo <- .fileInfo(x$path, group, "FASTQ", readWidth, pair)
+    totalReads <- countLines(x$path) / 4
+    fileInfo <- .fileInfo(x$path, group, "FASTQ", readWidth, pair, totalReads)
     
     top <- readFrequency[order(readFrequency$count, decreasing = TRUE)[1:top], ]
     top$hash <- as.character(top$hash)

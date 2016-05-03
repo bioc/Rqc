@@ -27,7 +27,7 @@
 #' @importMethodsFrom Biostrings encoding quality
 #' @importMethodsFrom IRanges mean quantile sub
 #' @importMethodsFrom S4Vectors Rle mcols
-#' @importMethodsFrom ShortRead alphabetByCycle alphabetScore FastqStreamer sread yield ShortReadQ
+#' @importMethodsFrom ShortRead alphabetByCycle alphabetScore FastqStreamer sread yield ShortReadQ countLines
 #' @importMethodsFrom Rsamtools path
 #' @importMethodsFrom GenomicAlignments readGAlignments
 #' @importFrom ggplot2 aes aes_string geom_bar geom_boxplot geom_line geom_point ggplot labs scale_fill_gradient scale_colour_manual scale_fill_manual scale_x_discrete qplot facet_wrap scale_y_discrete geom_tile geom_histogram coord_flip theme_bw geom_hline geom_vline geom_text geom_segment scale_x_log10 scale_fill_continuous
