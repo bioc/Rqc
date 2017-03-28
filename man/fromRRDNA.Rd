@@ -26,10 +26,9 @@ dna.converted <- toRRDNA(dna)
 dna.reverted <- fromRRDNA(dna.converted)
 all.equal(dna, dna.reverted)
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{perFileTopReads}}
 }
-
+\author{
+Welliton Souza
+}

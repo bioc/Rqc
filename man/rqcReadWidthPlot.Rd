@@ -23,6 +23,7 @@ Creates bar graph of per read width from all elements of input list.
 \itemize{
 \item \code{rqcReadWidthCalc}: calculates necessary statistics
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -38,4 +39,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-

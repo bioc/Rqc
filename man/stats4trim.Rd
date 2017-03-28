@@ -42,4 +42,3 @@ Welliton Souza
 }
 \keyword{qc}
 \keyword{trimming}
-

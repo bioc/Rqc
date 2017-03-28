@@ -56,12 +56,11 @@ can be directly used on publications.
   rqc(folder, ".fastq.gz", pair=c(1,1), workers=1, openBrowser=FALSE)
 
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{rqcQA}}
 }
+\author{
+Welliton Souza
+}
 \keyword{graphics}
 \keyword{qc}
-

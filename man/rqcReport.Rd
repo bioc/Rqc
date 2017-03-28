@@ -45,12 +45,11 @@ reportFile <- rqcReport(rqcResultSet)
 browseURL(reportFile)
 
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{rqc}}
 
 \code{\link{rqcQA}}
 }
-
+\author{
+Welliton Souza
+}

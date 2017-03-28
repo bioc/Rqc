@@ -23,6 +23,7 @@ Creates a graph of per cycle quality.
 \itemize{
 \item \code{rqcCycleQualityCalc}: calculates necessary statistics
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -38,4 +39,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-

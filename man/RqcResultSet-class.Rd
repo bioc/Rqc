@@ -118,4 +118,3 @@ head(perReadWidth(rqcResultSet))
 perFileInformation(rqcResultSet)
 perFileTopReads(rqcResultSet)
 }
-

@@ -23,6 +23,7 @@ This function creates a bar graph of read frequency (in percentage).
 \itemize{
 \item \code{rqcReadFrequencyCalc}: calculates necessary statistics
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -38,4 +39,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-

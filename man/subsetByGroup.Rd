@@ -30,4 +30,3 @@ perFileInformation(subsetByGroup(rqcResultSet, "a"))
 Welliton Souza
 }
 \keyword{qc}
-

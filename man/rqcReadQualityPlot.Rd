@@ -23,6 +23,7 @@ Plots the quality of all the files by read.
 \itemize{
 \item \code{rqcReadQualityCalc}: calculates necessary statistics
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -38,4 +39,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-

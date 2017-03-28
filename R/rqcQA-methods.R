@@ -66,7 +66,8 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
         SerialParam()
     }
  
-    rqcResultSet <- bpmapply(rqcQA, x, sample, n, group, top, pair, 
+    files <- lapply(x, detectFileFormat)
+    rqcResultSet <- bpmapply(rqcQA, files, sample, n, group, top, pair, 
         BPPARAM=param, SIMPLIFY=FALSE, USE.NAMES=FALSE)
     bpstop(param)
     
@@ -82,11 +83,7 @@ setMethod("rqcQA", signature(x="character"),
 function(x, sample = TRUE, n = 1e6, group = rep("None", length(x)),
          top=10, pair=seq_along(x), workers = multicoreWorkers())
 {
-    if (length(x) == 1) {
-        rqcQA(detectFileFormat(x), sample, n, group, top, pair)
-    } else {
-        rqcQA(as.list(x), sample, n, group, top, pair, workers)
-    }
+    rqcQA(as.list(x), sample, n, group, top, pair, workers)
 })
 
 #' @describeIn rqcQA process only one BAM file.

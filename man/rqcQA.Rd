@@ -3,10 +3,10 @@
 \docType{methods}
 \name{rqcQA}
 \alias{rqcQA}
+\alias{rqcQA,list-method}
+\alias{rqcQA,character-method}
 \alias{rqcQA,BamFile-method}
 \alias{rqcQA,FastqFile-method}
-\alias{rqcQA,character-method}
-\alias{rqcQA,list-method}
 \title{Quality Assessment Rqc function}
 \usage{
 rqcQA(x, sample = TRUE, n = 1e+06, group = rep("None", length(x)),
@@ -72,6 +72,7 @@ package.
 
 \item \code{FastqFile}: process only one FASTQ file.
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -82,10 +83,9 @@ checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 rqcReadQualityPlot(rqcResultSet)
 
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{rqc}}
 }
-
+\author{
+Welliton Souza
+}

@@ -21,4 +21,3 @@ files <- list.files(full.names=TRUE, path=folder)
 input <- lapply(files, detectFileFormat)
 sapply(input, class)
 }
-

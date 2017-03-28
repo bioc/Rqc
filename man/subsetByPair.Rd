@@ -32,4 +32,3 @@ perFileInformation(subsetByPair(rqcResultSet, 1))
 Welliton Souza
 }
 \keyword{qc}
-

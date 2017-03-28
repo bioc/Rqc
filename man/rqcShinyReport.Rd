@@ -27,4 +27,3 @@ checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
 \author{
 Welliton Souza
 }
-

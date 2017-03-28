@@ -23,6 +23,7 @@ Creates a line graph of per cycle percentual GC.
 \itemize{
 \item \code{rqcCycleGCCalc}: calculates necessary statistics
 }}
+
 \examples{
 
 checkpoint("Rqc", path=system.file(package="Rqc", "extdata"), {
@@ -38,4 +39,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-

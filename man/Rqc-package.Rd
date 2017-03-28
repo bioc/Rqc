@@ -2,8 +2,8 @@
 % Please edit documentation in R/Rqc-package.R
 \docType{package}
 \name{Rqc-package}
-\alias{Rqc}
 \alias{Rqc-package}
+\alias{Rqc}
 \title{Quality Control Tool for High-Throughput Sequencing Data}
 \description{
 Rqc is an optimized tool designed for quality assessment of high-throughput
@@ -24,4 +24,3 @@ Welliton Souza, Benilton Carvalho
 Maintainer: Welliton Souza <well309@gmail.com>
 }
 \keyword{package}
-

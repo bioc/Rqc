@@ -28,10 +28,9 @@ dna.converted <- toRRDNA(dna)
 nchar(dna)
 nchar(dna.converted)
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{perFileTopReads}}
 }
-
+\author{
+Welliton Souza
+}

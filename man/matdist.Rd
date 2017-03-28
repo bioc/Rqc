@@ -27,10 +27,9 @@ dna1 <- toRRDNA("atcgn")
 dna2 <- toRRDNA("atcga")
 matdist(c(dna1, dna2))
 }
-\author{
-Welliton Souza
-}
 \seealso{
 \code{\link{rqcFileHeatmap}}
 }
-
+\author{
+Welliton Souza
+}

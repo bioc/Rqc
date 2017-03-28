@@ -38,4 +38,3 @@ Welliton Souza
 }
 \keyword{graphics}
 \keyword{qc}
-
