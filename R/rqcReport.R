@@ -36,7 +36,8 @@ rqcReport <- function(rqcResultSet, outdir=tempdir(), file="rqc_report", keepMD=
                       templateFile=system.file("templates", package="Rqc", "rqc_report.Rmd"))
 {
     outdir <- normalizePath(outdir)
-    figDir <- paste0(tempdir(), "/rqc-")
+    figDir <- file.path(tempdir(), "rqc-")
+    figDir <- gsub("\\\\", "/", figDir)
     mdFile <- file.path(outdir, paste0(file, '.md'))
     htmlFile <- file.path(outdir, paste0(file, '.html'))
     knit(templateFile, mdFile, quiet=TRUE)
