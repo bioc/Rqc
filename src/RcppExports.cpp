@@ -38,3 +38,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"Rqc_toRRDNA", (DL_FUNC) &Rqc_toRRDNA, 1},
+    {"Rqc_fromRRDNA", (DL_FUNC) &Rqc_fromRRDNA, 1},
+    {"Rqc_matdist", (DL_FUNC) &Rqc_matdist, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_Rqc(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}

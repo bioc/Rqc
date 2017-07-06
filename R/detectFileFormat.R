@@ -9,7 +9,7 @@
 #' @export
 detectFileFormat <- function(file)
 {
-    if (grepl("fastq", file, ignore.case = FALSE))
+    if (grepl("fastq|fq", file, ignore.case = FALSE))
         FastqFile(file)
     else if (grepl("bam", file, ignore.case = FALSE))
         BamFile(file)
