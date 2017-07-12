@@ -1,6 +1,12 @@
 ```{r style, echo = FALSE, results = 'asis'}
 BiocStyle::markdown()
 ```
+```{r bitmap, echo=FALSE}
+pngnox11 = function(filename, width, height){
+   bitmap(file=filename, width=width, height=height, res=300)
+}
+```
+
 # Rqc `r packageVersion("Rqc")` - Quality Control Report
 
 ## File Information
@@ -12,7 +18,7 @@ kable(perFileInformation(rqcResultSet))
 
 ## Per Read Mean Quality Distribution of Files
 This plot describe an overview of per read mean quality distribution of all files
-```{r read-mean-dist, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r read-mean-dist, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 rqcReadQualityBoxPlot(rqcResultSet)
 ```
 
@@ -21,7 +27,7 @@ rqcReadQualityBoxPlot(rqcResultSet)
 This plot describes the average quality pattern by showing on the
 X-axis quality thresholds and on the Y-axis the percentage of reads
 that exceed that quality level.
-```{r average-quality-plot, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 groups <- unique(perFileInformation(rqcResultSet)$group)
 for (group in groups) {
   rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
@@ -32,7 +38,7 @@ for (group in groups) {
 
 ## Cycle-specific Average Quality
 This plot describes the average quality scores for each cycle of sequencing.
-```{r cycle-average-quality-plot, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-average-quality-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for (group in groups) {
   rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
   print(rqcCycleAverageQualityPlot(rqcResultSet.sub) +
@@ -42,7 +48,7 @@ for (group in groups) {
 
 ## PCA Biplot (cycle-specific read average quality)
 Biplot from Principal Component Analysis (PCA) of cycle-specific read average quality.
-```{r biplot, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r biplot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for (group in groups) {
   rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
   print(rqcCycleAverageQualityPcaPlot(rqcResultSet.sub) +
@@ -52,7 +58,7 @@ for (group in groups) {
 
 ## Read Frequency
 This plot shows the proportion of reads that appeared many times.
-```{r readfrequency, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r readfrequency, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for (group in groups) {
   rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
   print(rqcReadFrequencyPlot(rqcResultSet.sub) +
@@ -62,7 +68,7 @@ for (group in groups) {
 
 ## Read Length Distribution
 Barplot that presents the distribuition of the lengths of the reads available in the FASTQ file.
-```{r read-width-plot, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r read-width-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 pairs <- unique(perFileInformation(rqcResultSet)$pair)
 for(pair in pairs) {
   rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
@@ -72,7 +78,7 @@ for(pair in pairs) {
 
 ## Cycle-specific GC Content
 Line plot showing the average GC content for every cycle of sequencing.
-```{r cycle-gc-plot, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-gc-plot, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for (group in groups) {
   rqcResultSet.sub <- subsetByGroup(rqcResultSet, group)
   print(rqcCycleGCPlot(rqcResultSet.sub) +
@@ -85,7 +91,7 @@ Bar plot showing the proportion of quality calls per cycle. Colors are
 presented in a gradient Red-Blue, where red identifies calls of lower
 quality. This visualization is preferred as it is cleaner than the
 boxplots described below.
-```{r cycle-quality-plots, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-quality-plots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for(pair in pairs) {
   rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
   print(rqcCycleQualityPlot(rqcResultSet.sub))
@@ -94,7 +100,7 @@ for(pair in pairs) {
 
 ## Cycle-specific Quality Distribution - Boxplot
 Boxplots describing empirical patterns of quality distribution on each cycle of sequencing.
-```{r cycle-quality-boxplots, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-quality-boxplots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for(pair in pairs) {
   rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
   print(rqcCycleQualityBoxPlot(rqcResultSet.sub))
@@ -103,7 +109,7 @@ for(pair in pairs) {
 
 ## Cycle-specific Base Call Proportion
 This stacked bar plot describes the proportion of each nucleotide called for every cycle of sequencing.
-```{r cycle-basecall-plots, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-basecall-plots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for(pair in pairs) {
   rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
   print(rqcCycleBaseCallsPlot(rqcResultSet.sub))
@@ -113,7 +119,7 @@ for(pair in pairs) {
 The line plot shown below contains the same information as the plot
 above. However, some may find this easier to read when comparing the
 calling rates for each of the nucleotides.
-```{r cycle-basecall-lineplots, fig.width=10, fig.path=figDir, fig.ext='png'}
+```{r cycle-basecall-lineplots, fig.width=10, fig.path=figDir, dev='pngnox11', fig.ext='png'}
 for(pair in pairs) {
   rqcResultSet.sub <- subsetByPair(rqcResultSet, pair)
   print(rqcCycleBaseCallsLinePlot(rqcResultSet.sub))
