@@ -20,7 +20,7 @@
 #' nchar(dna.converted)
 #' @export
 toRRDNA <- function(dnas) {
-    .Call('Rqc_toRRDNA', PACKAGE = 'Rqc', dnas)
+    .Call('_Rqc_toRRDNA', PACKAGE = 'Rqc', dnas)
 }
 
 #' Revert codified DNA sequences to original DNA sequences.
@@ -40,7 +40,7 @@ toRRDNA <- function(dnas) {
 #' all.equal(dna, dna.reverted)
 #' @export
 fromRRDNA <- function(rrdnas) {
-    .Call('Rqc_fromRRDNA', PACKAGE = 'Rqc', rrdnas)
+    .Call('_Rqc_fromRRDNA', PACKAGE = 'Rqc', rrdnas)
 }
 
 #' Distance matrix of the similarity between the DNA sequences.
@@ -61,6 +61,6 @@ fromRRDNA <- function(rrdnas) {
 #' matdist(c(dna1, dna2))
 #' @export
 matdist <- function(rrdnas) {
-    .Call('Rqc_matdist', PACKAGE = 'Rqc', rrdnas)
+    .Call('_Rqc_matdist', PACKAGE = 'Rqc', rrdnas)
 }
 

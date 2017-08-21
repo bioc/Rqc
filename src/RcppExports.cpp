@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // toRRDNA
 StringVector toRRDNA(StringVector dnas);
-RcppExport SEXP Rqc_toRRDNA(SEXP dnasSEXP) {
+RcppExport SEXP _Rqc_toRRDNA(SEXP dnasSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,7 +18,7 @@ END_RCPP
 }
 // fromRRDNA
 StringVector fromRRDNA(StringVector rrdnas);
-RcppExport SEXP Rqc_fromRRDNA(SEXP rrdnasSEXP) {
+RcppExport SEXP _Rqc_fromRRDNA(SEXP rrdnasSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -29,7 +29,7 @@ END_RCPP
 }
 // matdist
 IntegerMatrix matdist(StringVector rrdnas);
-RcppExport SEXP Rqc_matdist(SEXP rrdnasSEXP) {
+RcppExport SEXP _Rqc_matdist(SEXP rrdnasSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -40,9 +40,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"Rqc_toRRDNA", (DL_FUNC) &Rqc_toRRDNA, 1},
-    {"Rqc_fromRRDNA", (DL_FUNC) &Rqc_fromRRDNA, 1},
-    {"Rqc_matdist", (DL_FUNC) &Rqc_matdist, 1},
+    {"_Rqc_toRRDNA", (DL_FUNC) &_Rqc_toRRDNA, 1},
+    {"_Rqc_fromRRDNA", (DL_FUNC) &_Rqc_fromRRDNA, 1},
+    {"_Rqc_matdist", (DL_FUNC) &_Rqc_matdist, 1},
     {NULL, NULL, 0}
 };
 
