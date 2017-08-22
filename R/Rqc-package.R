@@ -46,4 +46,6 @@
 #' @importFrom Rsamtools BamFile ScanBamParam yieldSize<- scanBam
 #' @importFrom shiny renderPlot validate need renderTable fluidPage titlePanel sidebarLayout sidebarPanel selectInput checkboxGroupInput mainPanel tabsetPanel tabPanel plotOutput tableOutput runApp 
 #' @importFrom GenomicFiles reduceByYield REDUCEsampler
+#' @importFrom stats hclust prcomp
+#' @importFrom utils browseURL head packageVersion
 NULL
