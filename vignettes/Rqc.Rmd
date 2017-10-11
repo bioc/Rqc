@@ -8,7 +8,7 @@ author:
   affiliation: University of Campinas, Campinas, Brazil
 package: Rqc
 output: 
-  BiocStyle::html_document2:
+  BiocStyle::html_document:
     toc_float: true
 vignette: >
   %\VignetteIndexEntry{Using Rqc}
