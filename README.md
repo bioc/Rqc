@@ -11,8 +11,9 @@ and produces a report which contains a set of high-resolution graphics.
 ## Installation
 Install via Bioconductor, stable version
 ```r
-source("http://bioconductor.org/biocLite.R")
-biocLite("Rqc")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Rqc")
 ```
 
 Install via GitHub, development vertion
