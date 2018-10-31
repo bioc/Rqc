@@ -1,0 +1,18 @@
+bibentry(bibtype = "Article",
+  title        = "{Rqc}: A {Bioconductor} Package for Quality Control of High-Throughput Sequencing Data",
+  author       = c(person(given = "W\\'elliton",
+                          family = "de Souza"),
+                   person(given = c("Benilton", "de", "S\\'a"),
+                          family = "Carvalho"),
+                   person(given = "Iscia",
+                          family = "Lopes-Cendes",
+                          email = "icendes@unicamp.br")),
+  journal      = "Journal of Statistical Software, Code Snippets",
+  year         = "2018",
+  volume       = "87",
+  number       = "2",
+  pages        = "1--14",
+  doi          = "10.18637/jss.v087.c02",
+  header       = "To cite Rqc/Bioconductor in publications use:"
+)
+
