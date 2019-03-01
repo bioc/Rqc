@@ -16,6 +16,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}  
 ---
 
+```{r include=FALSE}
+library(BiocStyle)
+```
+
 # Introduction
 
 Rqc is an optimized tool designed for quality control and assessment

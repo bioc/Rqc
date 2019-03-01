@@ -69,7 +69,6 @@ function(x, sample, n, group, top, pair, workers = multicoreWorkers())
     files <- lapply(x, detectFileFormat)
     rqcResultSet <- bpmapply(rqcQA, files, sample, n, group, top, pair, 
         BPPARAM=param, SIMPLIFY=FALSE, USE.NAMES=FALSE)
-    bpstop(param)
     
     names(rqcResultSet) <- sapply(x, basename)
     return(rqcResultSet)

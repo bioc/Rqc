@@ -22,30 +22,25 @@
 #' @useDynLib Rqc 
 #' @import methods
 #' @importClassesFrom ShortRead .QA
-#' @importMethodsFrom BiocGenerics do.call lapply ncol nrow paste rbind setdiff table unique width
-#' @importMethodsFrom BiocParallel bplapply bpmapply bpstop
+#' @importMethodsFrom BiocParallel bpmapply
 #' @importMethodsFrom Biostrings encoding quality
-#' @importMethodsFrom IRanges mean quantile sub
 #' @importMethodsFrom S4Vectors Rle mcols
 #' @importMethodsFrom ShortRead alphabetByCycle alphabetScore FastqStreamer sread yield ShortReadQ countLines
-#' @importMethodsFrom Rsamtools path
 #' @importMethodsFrom GenomicAlignments readGAlignments
-#' @importFrom ggplot2 aes aes_string geom_bar geom_boxplot geom_line geom_point ggplot labs scale_fill_gradient scale_colour_manual scale_fill_manual scale_x_discrete qplot facet_wrap scale_y_discrete geom_tile geom_histogram coord_flip theme_bw geom_hline geom_vline geom_text geom_segment scale_x_log10 scale_fill_continuous
-#' @importFrom knitr knit2html opts_knit kable
+#' @importMethodsFrom BiocGenerics width
+#' @importFrom ggplot2 aes aes_string geom_bar geom_boxplot geom_line geom_point ggplot labs scale_fill_gradient scale_colour_manual scale_fill_manual scale_x_discrete facet_wrap geom_tile coord_flip geom_hline geom_vline geom_text geom_segment scale_x_log10 scale_fill_continuous
+#' @importFrom knitr kable knit
 #' @importFrom ShortRead FastqSampler FastqFile 
-#' @importFrom BiocStyle markdown 
+#' @importFrom BiocStyle markdown
 #' @importFrom plyr ddply summarize 
-#' @importFrom knitr knit 
 #' @importFrom markdown markdownToHTML 
-#' @importFrom BiocParallel bpparam MulticoreParam SerialParam multicoreWorkers 
+#' @importFrom BiocParallel MulticoreParam SerialParam multicoreWorkers 
 #' @importFrom grid arrow unit 
 #' @importFrom reshape2 dcast melt
-#' @importFrom digest digest 
-#' @importFrom Rcpp evalCpp sourceCpp
 #' @importFrom biovizBase colorBlindSafePal  getBioColor
 #' @importFrom Rsamtools BamFile ScanBamParam yieldSize<- scanBam
 #' @importFrom shiny renderPlot validate need renderTable fluidPage titlePanel sidebarLayout sidebarPanel selectInput checkboxGroupInput mainPanel tabsetPanel tabPanel plotOutput tableOutput runApp 
 #' @importFrom GenomicFiles reduceByYield REDUCEsampler
-#' @importFrom stats hclust prcomp
+#' @importFrom stats hclust prcomp quantile
 #' @importFrom utils browseURL head packageVersion
 NULL

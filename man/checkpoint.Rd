@@ -4,8 +4,8 @@
 \alias{checkpoint}
 \title{Save time storing longer analysis step on disk}
 \usage{
-checkpoint(label, CODE, path = ".", overwrite = FALSE, verbose = FALSE,
-  keep = NULL)
+checkpoint(label, CODE, path = ".", overwrite = FALSE,
+  verbose = FALSE, keep = NULL)
 }
 \arguments{
 \item{label}{name of this code, will create a Rda file with the same name.}
