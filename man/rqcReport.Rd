@@ -4,9 +4,13 @@
 \alias{rqcReport}
 \title{Quality Control HTML Report}
 \usage{
-rqcReport(rqcResultSet, outdir = tempdir(), file = "rqc_report",
-  keepMD = FALSE, templateFile = system.file("templates", package =
-  "Rqc", "rqc_report.Rmd"))
+rqcReport(
+  rqcResultSet,
+  outdir = tempdir(),
+  file = "rqc_report",
+  keepMD = FALSE,
+  templateFile = system.file("templates", package = "Rqc", "rqc_report.Rmd")
+)
 }
 \arguments{
 \item{rqcResultSet}{list of \code{RqcResultSet} objects created by

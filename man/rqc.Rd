@@ -4,9 +4,19 @@
 \alias{rqc}
 \title{Main Rqc function}
 \usage{
-rqc(path = ".", pattern, sample = TRUE, n = 1e+06, group = NULL,
-  top = 10, pair = NULL, outdir = tempdir(), file = "rqc_report",
-  openBrowser = TRUE, workers = multicoreWorkers())
+rqc(
+  path = ".",
+  pattern,
+  sample = TRUE,
+  n = 1e+06,
+  group = NULL,
+  top = 10,
+  pair = NULL,
+  outdir = tempdir(),
+  file = "rqc_report",
+  openBrowser = TRUE,
+  workers = multicoreWorkers()
+)
 }
 \arguments{
 \item{path}{directory path that contains input files.}

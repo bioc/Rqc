@@ -2,3 +2,5 @@ README.md
 .Rproj.user
 *.o
 *.so
+Rqc.Rcheck
+Rqc_*.tar.gz

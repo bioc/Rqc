@@ -4,8 +4,11 @@
 \alias{rqcFileHeatmap}
 \title{Heatmap of distance matrix of top over-represented reads}
 \usage{
-rqcFileHeatmap(rqcResultSet, dist.method = "euclidean",
-  hclust.method = "ward.D")
+rqcFileHeatmap(
+  rqcResultSet,
+  dist.method = "euclidean",
+  hclust.method = "ward.D"
+)
 }
 \arguments{
 \item{rqcResultSet}{\code{RqcResultSet} object created by \code{\link{rqc}}
